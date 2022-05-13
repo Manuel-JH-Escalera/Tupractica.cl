@@ -1,32 +1,38 @@
 import React from "react"
 
-const UserForm = () => {
+const CompanyRegisterForm = () => {
 
     /* preventDefault = () => {
         preventDefault()
     } */
 
-    return <div className="container w-50 ">
+    return <div className="container w-50 mt-3">
     <div className="row">
     <form>
-        <div className="card col-sm-12 col-md-12 col-lg-12 mt-3">
+        <div className="card col-sm-12 col-md-12 col-lg-12">
             <div className="card-header fs-1 bg-info text-center">
-                <h1 className="card-title">Registro Para Alumnos</h1>
+                <h1 className="card-title">Registro Para Empresas</h1>
             </div>
             <div className="card-body">
-                <div className="alert alert-danger error" role="alert" id="error" >
+                <div className="alert alert-danger error" role="alert" id="error">
                     <b>Algunos campos estan incompletos.</b>
                 </div>
                 <div className="row pb-1">
                     <div className="col">
-                        <label for="firstname" className="form-label"><b>Nombres</b></label>
-                        <input type="text" className="form-control" placeholder="Tus Nombres" aria-label="First name" id="firstname"/>
+                        <label for="companyname" className="form-label"><b>Nombre de la Empresa</b></label>
+                        <input type="text" className="form-control" placeholder="Nombre de la Empresa" aria-label="First name" id="companyname"/>
+                    </div>
+                </div>
+                <div className="row pb-1 ">
+                    <div className="col">
+                        <label for="nameincharge" className="form-label"><b>Nombres de la Persona Encargada de la Cuenta</b></label>
+                        <input type="text" className="form-control" placeholder="Tus apellidos" aria-label="Last name" id="nameincharge"/>
                     </div>
                 </div>
                 <div className="row pb-1">
                     <div className="col">
-                        <label for="lastname" className="form-label"><b>Apellidos</b></label>
-                        <input type="text" className="form-control" placeholder="Tus apellidos" aria-label="Last name" id="lastname"/>
+                        <label for="lastnameincharge" className="form-label"><b>Apellidos de la Persona Encargada de la Cuenta</b></label>
+                        <input type="text" className="form-control" placeholder="Tus apellidos" aria-label="Last name" id="lastnameincharge"/>
                     </div>
                 </div>
                 <div className="row pb-1">
@@ -43,13 +49,13 @@ const UserForm = () => {
                 </div>
                 <div className="row pb-1">
                     <div className="col">
-                        <label for="date" className="form-label"><b>Fecha de Nacimiento</b></label>
-                        <input type="date" className="form-control" placeholder="date" aria-label="Last name" id="date"/>
+                        <label for="lastnameincharge" className="form-label"><b>Rut de la Empresa</b></label>
+                        <input type="number" className="form-control" placeholder="Rut" aria-label="Last name" id="lastnameincharge"/>
                     </div>
                 </div>
             </div>
-            <div className="card-footer ">
-                <div className="row d-md-flex gap-2">
+            <div className="card-footer">
+                <div className="row d-md-flex gap-2 justify-content-center">
                     <button type="submit" className="btn btn-primary btn-lg" /* onSubmit={(preventDefault)} */>Registrame</button>
                     <button type="reset" className="btn btn-secondary btn-lg">Limpiar</button>
                 </div>
@@ -60,4 +66,4 @@ const UserForm = () => {
 </div> 
 }
 
-export default UserForm
+export default CompanyRegisterForm
