@@ -1,7 +1,8 @@
 //import react into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
-import FrontPage from "./pages/FrontPage";
+import UserForm from "./pages/UserForm";
+import CompanyForm from "./pages/CompanyForm";
 //include your index.scss file into the bundle
 import "../styles/index.css";
 
@@ -9,4 +10,4 @@ import "../styles/index.css";
 import Layout from "./layout";
 
 //render your react application
-ReactDOM.render(<FrontPage />, document.querySelector("#app"));
+ReactDOM.render(<CompanyForm />, document.querySelector("#app"));

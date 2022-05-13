@@ -4,6 +4,7 @@ import { Navbar } from "../component/navbar";
 import { Card } from "../component/card";
 import { Jumbotron } from "../component/jumbotron";
 
+
 function Hola() {
   return (
     <>
@@ -13,7 +14,6 @@ function Hola() {
         <Card />
         <Card />
         <Card />
-
         <Footer />
       </div>
     </>
