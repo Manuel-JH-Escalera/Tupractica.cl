@@ -3,8 +3,9 @@ import React from "react";
 export const Card = () => {
   return (
     <div className="container mt-5">
+      <h2>Ejemplo:</h2>
       <div className="row">
-        <div className="col-sm-12 col-md-6 col-lg-3">
+        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
           <div className="card">
             <img
               src="https://picsum.photos/seed/100/500/325/"
@@ -24,7 +25,7 @@ export const Card = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-3">
+        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
           <div className="card">
             <img
               src="https://picsum.photos/seed/100/500/325/"
@@ -44,7 +45,7 @@ export const Card = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-3">
+        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
           <div className="card">
             <img
               src="https://picsum.photos/seed/100/500/325/"
@@ -64,7 +65,7 @@ export const Card = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-3">
+        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
           <div className="card">
             <img
               src="https://picsum.photos/seed/100/500/325/"
