@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 
 export const Footer = () => (
-  <div className="container">
+  <div className="container-fluid">
     <footer className="row row-cols-5 py-5 my-5 border-top">
       <div className="col">
         <a
           href="/"
           className="d-flex align-items-center mb-3 link-dark text-decoration-none"
         >
-          <svg className="bi me-2" width="40" height="32">
+          <svg className="bi me-2 " width="40" height="32">
             hola
           </svg>
         </a>
-        <p className="text-muted">&copy; 2021</p>
+        <p className="text-muted text-center">&copy; 2021</p>
       </div>
 
       <div className="col"></div>
