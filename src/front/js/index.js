@@ -7,6 +7,7 @@ import "../styles/index.css";
 
 //import your own components
 import Layout from "./layout";
+import { UserProfile } from "./pages/UserProfile";
 
 //render your react application
-ReactDOM.render(<FrontPage />, document.querySelector("#app"));
+ReactDOM.render(<UserProfile />, document.querySelector("#app"));
