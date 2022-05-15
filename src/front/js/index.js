@@ -14,4 +14,4 @@ import "../styles/index.css";
 import Layout from "./layout";
 
 //render your react application
-ReactDOM.render(<Jobs />, document.querySelector("#app"));
+ReactDOM.render(<Layout />, document.querySelector("#app"));

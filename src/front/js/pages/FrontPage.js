@@ -1,21 +1,21 @@
 import React from "react";
 import { Footer } from "../component/footer";
-import { Navbar } from "../component/navbar";
+import { Navbar } from "../component/Navbar";
 import { Card } from "../component/Card";
 import { Jumbotron } from "../component/jumbotron";
 
 
-function Hola() {
+function FrontPage() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
         <Jumbotron />
         <Card />
         <Card />
         <Card />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
 
-export default Hola;
+export {FrontPage};
