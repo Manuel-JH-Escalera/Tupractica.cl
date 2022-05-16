@@ -3,6 +3,7 @@ import { Footer } from "../component/footer";
 import { Navbar } from "../component/Navbar";
 import { Card } from "../component/Card";
 import { Jumbotron } from "../component/jumbotron";
+import { UserProfile } from "./UserProfile";
 
 
 function FrontPage() {
