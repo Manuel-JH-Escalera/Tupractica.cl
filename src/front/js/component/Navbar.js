@@ -1,6 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const styles = {
+  textDecoration: 'none',
+  color: "black"
+};
+
+const stylesb = {
+  textDecoration: 'none',
+  color: "white"
+};
+
 export const Navbar = () => {
   return (
     <nav
@@ -19,7 +29,7 @@ export const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
+        <a class="navbar-brand"><Link to="/" style={styles}>Logo/Inicio</Link></a>
         <div
           className="collapse navbar-collapse justify-content-md-center"
           id="navbarsExample08"
@@ -27,7 +37,7 @@ export const Navbar = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
-                Centered nav only
+                <Link to="/Buscador" style={styles}>Busca tu Practica</Link>
               </a>
             </li>
             <li className="nav-item">
@@ -46,22 +56,17 @@ export const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Registrate
               </a>
               <ul className="dropdown-menu" aria-labelledby="dropdown08">
                 <li>
                   <a className="dropdown-item" href="#">
-                    Action
+                    <Link to="/RegistroAlumno" style={styles}>Registro para Alumnos</Link>
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
+                    <Link to="/RegistroEmpresa" style={styles}>Registro para Empresas</Link>
                   </a>
                 </li>
               </ul>
@@ -70,10 +75,10 @@ export const Navbar = () => {
         </div>
         <div className=" text-end">
           <button type="button" className="btn btn-primary me-2">
-            Acesso
+            <Link to="/AccesoAlumno" style={stylesb}>Acceso Alumno</Link>
           </button>
           <button type="button" className="btn btn-primary">
-            Regístrate
+            <Link to="/AccesoEmpresa" style={stylesb}>Acceso Empresa</Link>
           </button>
         </div>
       </div>

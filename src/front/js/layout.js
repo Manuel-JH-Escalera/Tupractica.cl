@@ -3,11 +3,17 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
+import { FrontPage} from "./pages/FrontPage"
+import { CompanyRegister } from "./pages/CompanyRegister";
+import { UserRegister } from "./pages/UserRegister";
+import { CompanyLogin } from "./pages/CompanyLogin";
+import { UserLogin } from "./pages/UserLogin";
+import { Jobs } from "./pages/Jobs";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -23,10 +29,22 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/">
-							<Home />
+							<FrontPage />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/RegistroEmpresa">
+							<CompanyRegister />
+						</Route>
+						<Route exact path="/RegistroAlumno">
+							<UserRegister />
+						</Route>
+						<Route exact path="/AccesoEmpresa">
+							<CompanyLogin />
+						</Route>
+						<Route exact path="/AccesoAlumno">
+							<UserLogin />
+						</Route>
+						<Route exact path="/Buscador">
+							<Jobs />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

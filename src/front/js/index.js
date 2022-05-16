@@ -15,4 +15,5 @@ import Layout from "./layout";
 import { UserProfile } from "./pages/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile ";
 
-ReactDOM.render(<CompanyProfile />, document.querySelector("#app"));
+//render your react application
+ReactDOM.render(<Layout />, document.querySelector("#app"));
