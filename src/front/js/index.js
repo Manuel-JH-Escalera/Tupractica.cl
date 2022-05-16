@@ -13,5 +13,6 @@ import "../styles/index.css";
 //import your own components
 import Layout from "./layout";
 import { UserProfile } from "./pages/UserProfile";
+import { CompanyProfile } from "./pages/CompanyProfile ";
 
-ReactDOM.render(<UserProfile />, document.querySelector("#app"));
+ReactDOM.render(<CompanyProfile />, document.querySelector("#app"));

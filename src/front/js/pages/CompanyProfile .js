@@ -1,25 +1,17 @@
 import React from "react";
-import { Navbar } from "../component/navbar";
-import { Footer } from "../component/footer";
+import CompanyData from "../component/CompanyData";
 import ProfilePhoto from "../component/ProfilePhoto";
-import ProfileDataPerson from "../component/ProfileDataPerson";
 import AddressData from "../component/AddressData";
 import ContacInformation from "../component/ ContactInformation";
-import Anexos from "../component/anexos";
-
-export const UserProfile = () => {
+export const CompanyProfile = () => {
   return (
     <>
-      <Navbar />
-
       <div className="container ">
         <ProfilePhoto />
-        <ProfileDataPerson />
+        <CompanyData />
         <AddressData />
         <ContacInformation />
-        <Anexos />
       </div>
-      <Footer />
     </>
   );
 };
