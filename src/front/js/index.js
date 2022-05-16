@@ -14,4 +14,7 @@ import "../styles/index.css";
 import Layout from "./layout";
 import { UserProfile } from "./pages/UserProfile";
 
-ReactDOM.render(<UserProfile />, document.querySelector("#app"));
+
+//render your react application
+ReactDOM.render(<Layout />, document.querySelector("#app"));
+
