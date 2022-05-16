@@ -8,6 +8,9 @@ import { CompanyRegister } from "./pages/CompanyRegister";
 import { UserRegister } from "./pages/UserRegister";
 import { CompanyLogin } from "./pages/CompanyLogin";
 import { UserLogin } from "./pages/UserLogin";
+import { AdminLogin } from "./pages/AdminLogin";
+import { UserProfile } from "./pages/UserProfile";
+import { CompanyProfile } from "./pages/CompanyProfile ";
 import { Jobs } from "./pages/Jobs";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
@@ -42,6 +45,15 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/AccesoAlumno">
 							<UserLogin />
+						</Route>
+						<Route exact path="/PerfilEmpresa">
+							<CompanyProfile />
+						</Route>
+						<Route exact path="/PerfilAlumno">
+							<UserProfile />
+						</Route>
+						<Route exact path="/AccesoAdmin">
+							<AdminLogin />
 						</Route>
 						<Route exact path="/Buscador">
 							<Jobs />

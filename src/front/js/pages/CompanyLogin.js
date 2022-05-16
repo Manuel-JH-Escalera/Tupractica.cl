@@ -1,8 +1,8 @@
 import React from "react"
-import Login from "../component/Login";
+import BoxLoginCompany from "../component/BoxLoginCompany";
 
 function CompanyLogin () {
-    return <Login />
+    return <BoxLoginCompany />
 }
 
 export {CompanyLogin};
