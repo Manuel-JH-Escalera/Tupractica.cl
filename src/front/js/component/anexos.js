@@ -7,10 +7,10 @@ function Anexos() {
         <h2 className="pb-2 border-bottom">Mis Documento</h2>
       </div>
       <div className="row justify-content-start">
-        <div className="col-xs-12 col-sm-4 col-md-3">
-          <label>CURRÍCULUM VITAE:</label>
+        <div className="col-3">
+          <label>Anexo 1:</label>
         </div>
-        <div className="col-xs-12 col-sm-8 col-md-9 info-align">
+        <div className="col-9">
           {" "}
           <input
             type="file"
@@ -21,11 +21,11 @@ function Anexos() {
           />
         </div>
       </div>
-      <div className="row justify-content-start pt-4">
-        <div className="col-xs-12 col-sm-4 col-md-3">
-          <label>CERTIFICADO DE ALUMNO REGULAR:</label>
+      <div className="row">
+        <div className="col-3">
+          <label>Anexo 2:</label>
         </div>
-        <div className="col-xs-12 col-sm-8 col-md-9 info-align">
+        <div className="col-9">
           {" "}
           <input
             type="file"

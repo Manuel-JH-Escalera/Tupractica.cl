@@ -1,4 +1,10 @@
 import React from "react"
+import { Link } from "react-router-dom";
+
+const stylesb = {
+    textDecoration: 'none',
+    color: "white"
+  };
 
 const Login = () => {
 
@@ -19,7 +25,9 @@ const Login = () => {
                 <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                 <label className="form-check-label" for="exampleCheck1">Recuerdame</label>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="button" className="btn btn-primary">
+                <Link to="/PerfilEmpresa" style={stylesb}>Iniciar Sesion</Link>
+          </button>
         </form>
     </div>
 }
