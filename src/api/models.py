@@ -1,6 +1,62 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
+class Region(db.Model):
+    __tablename__ = 'region'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(120), nullable=False)
+    comuna= db.relationship('Comuna', backref="region")
+        
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre
+        }
+    
+    def serialize_with_contacts(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "contacts": self.get_contacts()
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+class Comuna(db.Model):
+    __tablename__ = 'comuna'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(120), nullable=False)
+    region_id= Column(Integer, ForeignKey('region.id'))
+    practicante= db.relationship('Practicante', backref="comuna")
+    oferta= db.relationship('Oferta', backref="comuna")
+    
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre
+        }
+  
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 class Practicante(db.Model):
     __tablename__ = 'practicante'
     id = db.Column(db.Integer, primary_key=True)
@@ -14,26 +70,27 @@ class Practicante(db.Model):
     biografia = db.Column(db.String(500), nullable=True)
     carrera_estudio = db.Column(db.String(120), nullable=False)
     telefono = db.Column(db.Integer, nullable=False)
-    comuna = db.Column(db.String(120), nullable=False)
-    contacts = db.relationship('Contact', backref="user")
-    
-
+    anexo1 = db.Column(db.String(120), nullable=True)
+    anexo2 = db.Column(db.String(120), nullable=True)
+    comuna_id= Column(Integer, ForeignKey('comuna.id'))
+    postulacion = db.relationship('Postulacion', backref="practicante")
+        
     def serialize(self):
         return {
             "id": self.id,
-            "username": self.username
+            "nombre": self.username,
+            "apellido": self.apellido,
+            "email": self.email,
+            "fecha_nacimiento": self.fecha_nacimiento,
+            "institucion": self.institucion,
+            "foto_perfil": self.foto_perfil,
+            "biografia": self.biografia,
+            "carrera_estudio": self.carrera_estudio,
+            "telefono": self.telefono,
+            "anexo1": self.anexo1,
+            "anexo2": self.anexo2
         }
     
-    def serialize_with_contacts(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "contacts": self.get_contacts()
-        }
-
-    def get_contacts(self):
-        return list(map(lambda contact: contact.serialize(), self.contacts))
-
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -45,33 +102,27 @@ class Practicante(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-
-class Contact(db.Model):
-    __tablename__ = 'contacts'
+class Empresa(db.Model):
+    __tablename__ = 'empresa'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120))
-    phone = db.Column(db.String(120), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
-
+    razon_social = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+    password = db.Column(db.String(120), nullable=False)
+    foto_perfil = db.Column(db.String(120), nullable=True)
+    biografia = db.Column(db.String(500), nullable=True)
+    telefono = db.Column(db.Integer, nullable=False)
+    oferta = db.relationship('Oferta', backref="empresa")
+        
     def serialize(self):
         return {
             "id": self.id,
-            "name": self.name,
+            "razon_social": self.razon_social,
             "email": self.email,
-            "phone": self.phone
+            "foto_perfil": self.foto_perfil,
+            "biografia": self.biografia,
+            "telefono":  self.telefono
         }
-
-    def serialize_with_user(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "email": self.email,
-            "phone": self.phone,
-            "user": self.user.username
-        }
-
+    
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -82,3 +133,91 @@ class Contact(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+class Oferta(db.Model):
+    __tablename__ = 'oferta'
+    id = db.Column(db.Integer, primary_key=True)
+    titulo = db.Column(db.String(120), nullable=False)
+    area = db.Column(db.String(120), nullable=False)
+    descripcion = db.Column(db.String(500), nullable=True)
+    carrera_requerida = db.Column(db.String(120), nullable=False)
+    fecha_inicio = db.Column(db.datetime.date(), nullable=False)
+    fecha_termino = db.Column(db.datetime.date(), nullable=False)
+    comuna_id= Column(Integer, ForeignKey('comuna.id'))
+    empresa_id= Column(Integer, ForeignKey('empresa.id'))
+    postulacion = db.relationship('Postulacion', backref="oferta")
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "titulo": self.titulo,
+            "area": self.area,
+            "descripcion": self.descripcion,
+            "carrera_requerida": self.carrera_requerida,
+            "fecha_inicio": self.fecha_inicio,
+            "fecha_termino": self.fecha_termino
+        }
+    
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+class Postulacion(db.Model):
+    __tablename__ = 'postulacion'
+    id = db.Column(db.Integer, primary_key=True)
+    fecha_postulacion = db.Column(db.datetime.date(), nullable=False)
+    practicante_id= Column(Integer, ForeignKey('practicante.id'))
+    oferta_id= Column(Integer, ForeignKey('oferta.id'))
+  
+    def serialize(self):
+        return {
+            "id": self.id,
+            "fecha_postulacion": self.fecha_postulacion
+        }
+    
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+class Administrador(db.Model):
+    __tablename__ = 'administrador'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(120), nullable=False)
+    apellido = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+    password = db.Column(db.String(120), nullable=False)
+   
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
+            "email": self.email
+        }
+    
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
