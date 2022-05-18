@@ -1,5 +1,4 @@
 import React from "react";
-import Input from "./Forms/Input";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
