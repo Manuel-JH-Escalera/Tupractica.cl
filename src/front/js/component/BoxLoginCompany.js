@@ -24,26 +24,29 @@ const Login = () => {
             <div className="mb-3">
                 <label for="exampleInputEmail1" className="form-label">Correo Electronico</label>
                 <span class="input-group">
-                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" {...register("email", {pattern: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ })}/>
+                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" {...register("email", {
+                        required: true,
+                        pattern: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ })}/>
                     { errors.email?.type === "pattern" && <span className="input-group-text bg-white border-start-0" id="basic-addon1" ><AiFillCloseCircle className="fs-4 text-danger"/></span>}
                 </span>
-                    { errors.email?.type === "pattern" && <p>El formato de email no es valido</p>}
+                    { errors.email?.type === "pattern" && <label>El formato de email no es valido</label>}
             </div>
             <div className="mb-3 pt-3">
                 <label for="exampleInputPassword1" className="form-label">Password</label>
                 <span class="input-group">
-                    <input type="password" className="form-control" id="exampleInputPassword1" {...register("password", {required: true})}/>
-                    { errors.email?.type === "required" && <span className="input-group-text bg-white border-start-0" id="basic-addon1" ><AiFillCloseCircle className="fs-4 text-danger"/></span>}
+                    <input type="password" className="form-control" id="exampleInputPassword1" {...register("password", {
+                        required: true,
+                        minLength: 5
+                        })}/>
+                    { errors.password?.type === "minLength" && <span className="input-group-text bg-white border-start-0" id="basic-addon1" ><AiFillCloseCircle className="fs-4 text-danger"/></span>}
                 </span>
+                    { errors.password?.type === "minLength" && <p>El password</p>}
             </div>
             <div className="mb-3 form-check">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1" {...register("remember",)}/>
                 <label className="form-check-label" for="exampleCheck1">Recuerdame</label>
             </div>
             <input type="submit" value="Iniciar sesión" className="bg-primary text-white border-0"></input>
-            {/* <button type="button" className="btn btn-primary">
-                <Link to="/PerfilEmpresa" style={stylesb}>Iniciar Sesion</Link>
-          </button> */}
         </form>
     </div>
 }
