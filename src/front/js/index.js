@@ -7,7 +7,6 @@ import FrontPage from "./pages/FrontPage";
 import CompanyRegister from "./pages/CompanyRegister";
 import UserRegister from "./pages/UserRegister";
 import Jobs from "./pages/Jobs";
-import Input from "./component/Forms/Input";
 import { CompanyLogin } from "./pages/CompanyLogin";
 //include your index.scss file into the bundle
 import "../styles/index.css";
