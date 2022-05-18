@@ -35,7 +35,7 @@ class Comuna(db.Model):
     __tablename__ = 'comuna'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(120), nullable=False)
-    region_id= Column(Integer, ForeignKey('region.id'))
+    region_id= db.Column(db.Integer, db.ForeignKey('region.id'))
     practicante= db.relationship('Practicante', backref="comuna")
     oferta= db.relationship('Oferta', backref="comuna")
     
@@ -64,7 +64,7 @@ class Practicante(db.Model):
     apellido = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
-    fecha_nacimiento = db.Column(db.datetime.date(), nullable=False)
+    fecha_nacimiento = db.Column(db.String(120), nullable=False)
     institucion = db.Column(db.String(120), nullable=False)
     foto_perfil = db.Column(db.String(120), nullable=True)
     biografia = db.Column(db.String(500), nullable=True)
@@ -72,7 +72,7 @@ class Practicante(db.Model):
     telefono = db.Column(db.Integer, nullable=False)
     anexo1 = db.Column(db.String(120), nullable=True)
     anexo2 = db.Column(db.String(120), nullable=True)
-    comuna_id= Column(Integer, ForeignKey('comuna.id'))
+    comuna_id= db.Column(db.Integer, db.ForeignKey('comuna.id'))
     postulacion = db.relationship('Postulacion', backref="practicante")
         
     def serialize(self):
@@ -141,10 +141,10 @@ class Oferta(db.Model):
     area = db.Column(db.String(120), nullable=False)
     descripcion = db.Column(db.String(500), nullable=True)
     carrera_requerida = db.Column(db.String(120), nullable=False)
-    fecha_inicio = db.Column(db.datetime.date(), nullable=False)
-    fecha_termino = db.Column(db.datetime.date(), nullable=False)
-    comuna_id= Column(Integer, ForeignKey('comuna.id'))
-    empresa_id= Column(Integer, ForeignKey('empresa.id'))
+    fecha_inicio = db.Column(db.String(120), nullable=False)
+    fecha_termino = db.Column(db.String(120), nullable=False)
+    comuna_id= db.Column(db.Integer, db.ForeignKey('comuna.id'))
+    empresa_id= db.Column(db.Integer, db.ForeignKey('empresa.id'))
     postulacion = db.relationship('Postulacion', backref="oferta")
     
     def serialize(self):
@@ -172,9 +172,9 @@ class Oferta(db.Model):
 class Postulacion(db.Model):
     __tablename__ = 'postulacion'
     id = db.Column(db.Integer, primary_key=True)
-    fecha_postulacion = db.Column(db.datetime.date(), nullable=False)
-    practicante_id= Column(Integer, ForeignKey('practicante.id'))
-    oferta_id= Column(Integer, ForeignKey('oferta.id'))
+    fecha_postulacion = db.Column(db.String(120), nullable=False)
+    practicante_id= db.Column(db.Integer, db.ForeignKey('practicante.id'))
+    oferta_id= db.Column(db.Integer, db.ForeignKey('oferta.id'))
   
     def serialize(self):
         return {
