@@ -8,6 +8,7 @@ import CompanyRegister from "./pages/CompanyRegister";
 import UserRegister from "./pages/UserRegister";
 import Jobs from "./pages/Jobs";
 import { CompanyLogin } from "./pages/CompanyLogin";
+import { CompanyPost } from "./pages/CompanyPost";
 //include your index.scss file into the bundle
 import "../styles/index.css";
 

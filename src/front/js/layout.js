@@ -15,6 +15,7 @@ import { Jobs } from "./pages/Jobs";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+import { CompanyPost } from "./pages/CompanyPost";
 
 import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
@@ -57,6 +58,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/Buscador">
               <Jobs />
+            </Route>
+            <Route exact path="/PublicarOferta">
+              <CompanyPost />
             </Route>
             <Route exact path="/single/:theid">
               <Single />
