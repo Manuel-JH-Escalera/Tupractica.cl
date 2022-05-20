@@ -21,13 +21,13 @@ const UserRegisterForm = () => {
     <div className="container w-50 ">
       <div className="row">
         <form
-          className="card col-sm-12 col-md-12 col-lg-12 mt-3"
+          className=" mt-3"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="card-header fs-1 bg-white text-center">
-            <h1 className="card-title">Registro Para Alumnos</h1>
+          <div className="fs-1 bg-white text-center">
+            <h1> Registro Para Alumnos</h1>
           </div>
-          <div className="card-body">
+          <div className="">
             <div className="row pb-1">
               <div className="col">
                 <label for="firstname" className="form-label">
@@ -182,11 +182,11 @@ const UserRegisterForm = () => {
               </div>
             </div>
           </div>
-          <div className="card-footer ">
+          <div className="">
             <div className="row d-md-flex gap-2">
               <button
                 type="submit"
-                className="btn btn-primary btn-lg" /* onSubmit={(preventDefault)} */
+                className="btn btn-primary btn-lg mt-2"
               >
                 Registrame
               </button>

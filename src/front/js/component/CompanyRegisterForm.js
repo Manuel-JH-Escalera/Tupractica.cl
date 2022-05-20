@@ -23,13 +23,13 @@ const CompanyRegisterForm = () => {
     <div className="container w-50 mt-3">
       <div className="row">
         <form
-          className="card col-sm-12 col-md-12 col-lg-12"
+          className="col-sm-12 col-md-12 col-lg-12"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="card-header fs-1 bg-white text-center">
+          <div className="fs-1 bg-white text-center">
             <h1 className="card-title">Registro Para Empresas</h1>
           </div>
-          <div className="card-body">
+          <div className="">
             <div className="row pb-1">
               <div className="col">
                 <label for="companyname" className="form-label">
@@ -155,11 +155,11 @@ const CompanyRegisterForm = () => {
               </div>
             </div>
           </div>
-          <div className="card-footer">
+          <div className="">
             <div className="row d-md-flex gap-2 justify-content-center">
               <button
                 type="submit"
-                className="btn btn-primary btn-lg" /* onSubmit={(preventDefault)} */
+                className="btn btn-primary btn-lg mt-2" 
               >
                 Registrame
               </button>

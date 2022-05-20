@@ -12,6 +12,8 @@ import { AdminLogin } from "./pages/AdminLogin";
 import { UserProfile } from "./pages/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile ";
 import { Jobs } from "./pages/Jobs";
+import { MyJobsApply } from "./pages/MyJobsApply";
+import { MyPostsCompany } from "./pages/MyPostsCompany";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -57,6 +59,12 @@ const Layout = () => {
             </Route>
             <Route exact path="/Buscador">
               <Jobs />
+            </Route>
+            <Route exact path="/TusPostulaciones">
+              <MyJobsApply />
+            </Route>
+            <Route exact path="/TusOfertas">
+              <MyPostsCompany />
             </Route>
             <Route exact path="/single/:theid">
               <Single />
