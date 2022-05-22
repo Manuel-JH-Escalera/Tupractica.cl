@@ -68,8 +68,4 @@ public/
 .now
 
 # backend stuff
-.venv
-database.database
-database.db
-diagram.png
 __pycache__/
