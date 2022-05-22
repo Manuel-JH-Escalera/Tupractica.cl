@@ -17,6 +17,7 @@ import { MyPostsCompany } from "./pages/MyPostsCompany";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+import { AdminRegisterPrueba } from "./pages/AdminRegisterPrueba";
 
 import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
@@ -41,6 +42,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/RegistroUsuario">
               <UserRegister />
+            </Route>
+            <Route exact path="/RegistroAdmin">
+              <AdminRegisterPrueba />
             </Route>
             <Route exact path="/AccesoEmpresa">
               <CompanyLogin />

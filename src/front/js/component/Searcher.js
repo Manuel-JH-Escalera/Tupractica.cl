@@ -1,7 +1,7 @@
 import React from "react"
 import { BiSearchAlt } from "react-icons/bi";
 import { useState } from "react";
-import JSONDATA from "/workspace/Proyecto-Final/src/DataPruebas/MOCK_DATA.json"
+import JSONDATA from "/workspace/react-flask-hello/src/DataPruebas/MOCK_DATA.json"
 
 const Searcher = () => {
 
