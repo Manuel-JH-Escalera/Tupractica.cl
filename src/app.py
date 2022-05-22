@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_migrate import Migrate
-from models import db, Practicante
+from models import db, Practicante, Administrador
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -29,6 +29,24 @@ def register_user():
     practicante.password = password
     practicante.fecha_nacimiento = fecha_nacimiento
     practicante.save()
+
+@app.route('/api/admin-register', methods=['POST'])
+def register_admin():
+    nombre = request.json.get('nombre')
+    apellido = request.json.get('apellido')
+    email = request.json.get('email')
+    password = request.json.get('password')
+
+    administrador = Administrador()
+    administrador.nombre = nombre
+    administrador.apellido = apellido
+    administrador.email = email
+    administrador.password = password
+
+    administrador.save()
+
+    return jsonify(administrador.serialize())
+
 
 if __name__ == '__main__':
     app.run()
