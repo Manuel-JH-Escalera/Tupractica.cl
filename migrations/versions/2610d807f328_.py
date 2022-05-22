@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 53df901227b9
+Revision ID: 2610d807f328
 Revises: 
-Create Date: 2022-05-22 00:39:14.964085
+Create Date: 2022-05-22 02:58:37.218737
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '53df901227b9'
+revision = '2610d807f328'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -43,11 +43,18 @@ def upgrade():
     sa.Column('nombre', sa.String(length=120), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('comuna',
+    op.create_table('provincia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('nombre', sa.String(length=120), nullable=False),
     sa.Column('region_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['region_id'], ['region.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('comuna',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('nombre', sa.String(length=120), nullable=False),
+    sa.Column('provincia_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['provincia_id'], ['provincia.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('oferta',
@@ -71,11 +78,11 @@ def upgrade():
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=120), nullable=False),
     sa.Column('fecha_nacimiento', sa.String(length=120), nullable=False),
-    sa.Column('institucion', sa.String(length=120), nullable=False),
+    sa.Column('institucion', sa.String(length=120), nullable=True),
     sa.Column('foto_perfil', sa.String(length=120), nullable=True),
     sa.Column('biografia', sa.String(length=500), nullable=True),
-    sa.Column('carrera_estudio', sa.String(length=120), nullable=False),
-    sa.Column('telefono', sa.Integer(), nullable=False),
+    sa.Column('carrera_estudio', sa.String(length=120), nullable=True),
+    sa.Column('telefono', sa.Integer(), nullable=True),
     sa.Column('anexo1', sa.String(length=120), nullable=True),
     sa.Column('anexo2', sa.String(length=120), nullable=True),
     sa.Column('comuna_id', sa.Integer(), nullable=True),
@@ -101,6 +108,7 @@ def downgrade():
     op.drop_table('practicante')
     op.drop_table('oferta')
     op.drop_table('comuna')
+    op.drop_table('provincia')
     op.drop_table('region')
     op.drop_table('empresa')
     op.drop_table('administrador')

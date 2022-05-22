@@ -5,7 +5,7 @@ class Region(db.Model):
     __tablename__ = 'region'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(120), nullable=False)
-    comuna= db.relationship('Comuna', backref="region")
+    provincia= db.relationship('Provincia', backref="region")
         
     def serialize(self):
         return {
@@ -31,11 +31,36 @@ class Region(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+class Provincia(db.Model):
+    __tablename__ = 'provincia'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(120), nullable=False)
+    region_id= db.Column(db.Integer, db.ForeignKey('region.id'))
+    comuna= db.relationship('Comuna', backref="provincia")
+       
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre
+        }
+  
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 class Comuna(db.Model):
     __tablename__ = 'comuna'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(120), nullable=False)
-    region_id= db.Column(db.Integer, db.ForeignKey('region.id'))
+    provincia_id= db.Column(db.Integer, db.ForeignKey('provincia.id'))
     practicante= db.relationship('Practicante', backref="comuna")
     oferta= db.relationship('Oferta', backref="comuna")
     
