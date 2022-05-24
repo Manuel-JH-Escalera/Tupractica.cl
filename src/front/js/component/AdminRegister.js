@@ -6,9 +6,7 @@ import { useForm } from "react-hook-form";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
 const AdminRegisterForm = () => {
-    /* preventDefault = () => {
-          preventDefault()
-      } */
+    
     const {
       register,
       formState: { errors },
@@ -16,7 +14,7 @@ const AdminRegisterForm = () => {
     } = useForm();
   
     const onSubmit = (data) => {
-        fetch("https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us45.gitpod.io/api/admin-register", {
+        fetch("https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/api/admin-register", {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(data), // data can be `string` or {object}!
             headers:{
@@ -81,7 +79,7 @@ const AdminRegisterForm = () => {
                       className="form-control"
                       placeholder="Nombre de la Empresa"
                       aria-label="Nombre"
-                      id="Nombre"
+                      id="apellido"
                       {...register("apellido", {
                         required: true,
                       })}
