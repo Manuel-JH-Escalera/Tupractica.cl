@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_migrate import Migrate
-from models import db, Practicante, Administrador
+from models import db, Practicante, Administrador, Region, Provincia
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -49,6 +49,14 @@ def register_admin():
 
     return jsonify(administrador.serialize())
 
+#Devuelve todas las regiones
+
+@app.route('/region', methods=['GET'])
+def showRegion():
+    allRegion = Region.query.all()
+    allRegion = list(map(lambda x: x.serialize(), allRegion))
+
+    return jsonify(allRegion)
 
 if __name__ == '__main__':
     app.run()

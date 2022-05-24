@@ -181,6 +181,67 @@ const UserRegisterForm = () => {
                 )}
               </div>
             </div>
+            <div className="row pb-1">
+              <div className="col">
+                <label for="region" className="form-label">
+                  <b>Region</b>
+                </label>
+                <select class="form-select" aria-label="Default select example" {...register("region", {
+                      required: true,
+                    })}>
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+            <div className="row pb-1">
+              <div className="col">
+                <label for="mail" className="form-label">
+                  <b>Provincia</b>
+                </label>
+                <select class="form-select" aria-label="Default select example" {...register("provincia", {
+                      required: true,
+                    })}>
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+            <div className="row pb-1">
+              <div className="col">
+                <label for="comuna" className="form-label">
+                  <b>Comuna</b>
+                </label>
+                <span className="input-group">
+                  <select class="form-select" aria-label="Default select example" {...register("comuna", {
+                        required: true,
+                      })}>
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                  {errors.comuna?.type === "required" && (
+                    <span
+                      className="input-group-text bg-white border-start-0"
+                      id="basic-addon1"
+                    >
+                      <AiFillCloseCircle className="fs-4 text-danger" />
+                    </span>
+                  )}
+                </span>
+                {errors.comuna?.type === "required" && (
+                <p className="text-danger">
+                  {" "}
+                  La comuna es requerida{" "}
+                </p>
+              )}
+              </div>
+            </div>
           </div>
           <div className="">
             <div className="row d-md-flex gap-2">

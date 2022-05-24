@@ -43,7 +43,7 @@ const AdminRegisterForm = () => {
                   <label for="companyname" className="form-label">
                     <b>Nombre</b>
                   </label>
-                  <span class="input-group">
+                  <span className="input-group">
                     <input
                       type="text"
                       className="form-control"
@@ -73,7 +73,7 @@ const AdminRegisterForm = () => {
                   <label for="companyname" className="form-label">
                     <b>Apellido</b>
                   </label>
-                  <span class="input-group">
+                  <span className="input-group">
                     <input
                       type="text"
                       className="form-control"
@@ -103,7 +103,7 @@ const AdminRegisterForm = () => {
                   <label for="mail" className="form-label">
                     <b>Correo Electronico</b>
                   </label>
-                  <span class="input-group">
+                  <span className="input-group">
                     <input
                       type="text"
                       className="form-control"
@@ -141,7 +141,7 @@ const AdminRegisterForm = () => {
                   <label for="password" className="form-label">
                     <b>Contraseña</b>
                   </label>
-                  <span class="input-group">
+                  <span className="input-group">
                     <input
                       type="password"
                       className="form-control"

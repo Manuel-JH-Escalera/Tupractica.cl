@@ -18,6 +18,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { AdminRegisterPrueba } from "./pages/AdminRegisterPrueba";
+import { Navbar2 } from "./component/navbar2";
 
 import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
@@ -32,7 +33,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
+          <Navbar2 />
           <Switch>
             <Route exact path="/">
               <FrontPage />
@@ -40,7 +41,7 @@ const Layout = () => {
             <Route exact path="/RegistroEmpresa">
               <CompanyRegister />
             </Route>
-            <Route exact path="/RegistroUsuario">
+            <Route exact path="/RegistroAlumno">
               <UserRegister />
             </Route>
             <Route exact path="/RegistroAdmin">

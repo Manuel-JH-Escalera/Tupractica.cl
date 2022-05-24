@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: () => {
-				// fetching data from the backend
+				
 				fetch(process.env.BACKEND_URL + "/api/hello")
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
