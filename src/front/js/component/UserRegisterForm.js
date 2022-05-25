@@ -2,11 +2,20 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
+import { useEffect } from "react/cjs/react.production.min";
+
+
 
 const UserRegisterForm = () => {
-  /* preventDefault = () => {
-        preventDefault()
-    } */
+
+  fetch('https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io')
+  .then((response) => {
+    return response.json();
+  })
+  .then((myJson) => {
+    console.log(myJson);
+  });
+  
   const {
     register,
     formState: { errors },
@@ -261,5 +270,7 @@ const UserRegisterForm = () => {
     </div>
   );
 };
+
+
 
 export default UserRegisterForm;
