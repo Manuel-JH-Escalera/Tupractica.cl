@@ -16,6 +16,6 @@ import "../styles/index.css";
 import Layout from "./layout";
 import { UserProfile } from "./pages/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile ";
-
+import StudentApplications from "./pages/StudentApplications";
 //render your react application
 ReactDOM.render(<Layout />, document.querySelector("#app"));

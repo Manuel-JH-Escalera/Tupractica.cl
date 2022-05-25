@@ -19,6 +19,7 @@ import { CompanyPost } from "./pages/CompanyPost";
 
 import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
+import { StudentApplications } from "./pages/StudentApplications";
 
 //create your first component
 const Layout = () => {
@@ -64,6 +65,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/single/:theid">
               <Single />
+            </Route>
+            <Route exact path="/MisPostulaciones">
+              <StudentApplications />
             </Route>
             <Route>
               <h1>Not found!</h1>
