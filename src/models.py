@@ -42,7 +42,8 @@ class Provincia(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "nombre": self.nombre
+            "nombre": self.nombre,
+            "region_id": self.region.id
         }
   
     def save(self):
@@ -68,7 +69,8 @@ class Comuna(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "nombre": self.nombre
+            "nombre": self.nombre,
+            "provincia_id": self.provincia_id
         }
   
     def save(self):
@@ -103,7 +105,7 @@ class Practicante(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "nombre": self.username,
+            "nombre": self.nombre,
             "apellido": self.apellido,
             "email": self.email,
             "fecha_nacimiento": self.fecha_nacimiento,
@@ -113,7 +115,8 @@ class Practicante(db.Model):
             "carrera_estudio": self.carrera_estudio,
             "telefono": self.telefono,
             "anexo1": self.anexo1,
-            "anexo2": self.anexo2
+            "anexo2": self.anexo2,
+            "comuna_id": self.comuna_id
         }
     
     def save(self):
@@ -180,7 +183,9 @@ class Oferta(db.Model):
             "descripcion": self.descripcion,
             "carrera_requerida": self.carrera_requerida,
             "fecha_inicio": self.fecha_inicio,
-            "fecha_termino": self.fecha_termino
+            "fecha_termino": self.fecha_termino,
+            "comuna_id": self.comuna_id,
+            "empresa_id": self.empresa_id
         }
     
     def save(self):
@@ -204,7 +209,9 @@ class Postulacion(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "fecha_postulacion": self.fecha_postulacion
+            "fecha_postulacion": self.fecha_postulacion,
+            "practicante_id": self.practicante_id,
+            "oferta_id": self.oferta_id
         }
     
     def save(self):
