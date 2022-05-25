@@ -15,7 +15,6 @@ class Comuna(db.Model):
         return {
             "id": self.id,
             "nombre": self.nombre,
-            "provincia_id": self.provincia_id
         }
   
     def save(self):
