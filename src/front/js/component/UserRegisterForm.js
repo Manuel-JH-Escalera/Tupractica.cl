@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
@@ -18,14 +17,11 @@ const UserRegisterForm = () => {
   return (
     <div className="container w-50 ">
       <div className="row">
-        <form
-          className="card col-sm-12 col-md-12 col-lg-12 mt-3"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="card-header fs-1 bg-white text-center">
-            <h1 className="card-title">Registro Para Alumnos</h1>
+        <form className=" mt-3" onSubmit={handleSubmit(onSubmit)}>
+          <div className="fs-1 bg-white text-center">
+            <h1> Registro Para Alumnos</h1>
           </div>
-          <div className="card-body">
+          <div className="">
             <div className="row pb-1">
               <div className="col">
                 <label for="firstname" className="form-label">
@@ -179,13 +175,80 @@ const UserRegisterForm = () => {
                 )}
               </div>
             </div>
+            <div className="row pb-1">
+              <div className="col">
+                <label for="region" className="form-label">
+                  <b>Region</b>
+                </label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  {...register("region", {
+                    required: true,
+                  })}
+                >
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+            <div className="row pb-1">
+              <div className="col">
+                <label for="mail" className="form-label">
+                  <b>Provincia</b>
+                </label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  {...register("provincia", {
+                    required: true,
+                  })}
+                >
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+            <div className="row pb-1">
+              <div className="col">
+                <label for="comuna" className="form-label">
+                  <b>Comuna</b>
+                </label>
+                <span className="input-group">
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    {...register("comuna", {
+                      required: true,
+                    })}
+                  >
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                  {errors.comuna?.type === "required" && (
+                    <span
+                      className="input-group-text bg-white border-start-0"
+                      id="basic-addon1"
+                    >
+                      <AiFillCloseCircle className="fs-4 text-danger" />
+                    </span>
+                  )}
+                </span>
+                {errors.comuna?.type === "required" && (
+                  <p className="text-danger"> La comuna es requerida </p>
+                )}
+              </div>
+            </div>
           </div>
-          <div className="card-footer ">
+          <div className="">
             <div className="row d-md-flex gap-2">
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg" /* onSubmit={(preventDefault)} */
-              >
+              <button type="submit" className="btn btn-primary btn-lg mt-2">
                 Registrame
               </button>
               <button type="reset" className="btn btn-secondary btn-lg">

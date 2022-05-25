@@ -32,7 +32,7 @@ Thumbs.db
 
 # ignore log files and databases
 *.log
-*.sql
+
 *.sqlite
 
 # ignore compiled files
@@ -68,8 +68,4 @@ public/
 .now
 
 # backend stuff
-.venv
-database.database
-database.db
-diagram.png
 __pycache__/

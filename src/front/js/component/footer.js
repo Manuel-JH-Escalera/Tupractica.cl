@@ -12,7 +12,7 @@ export const Footer = () => (
             hola
           </svg>
         </a>
-        <p className="text-muted text-center">&copy; 2021</p>
+        <p className="text-muted text-center">&copy; 2022</p>
       </div>
 
       <div className="col"></div>

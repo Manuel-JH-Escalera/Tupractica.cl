@@ -12,10 +12,17 @@ import { AdminLogin } from "./pages/AdminLogin";
 import { UserProfile } from "./pages/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile ";
 import { Jobs } from "./pages/Jobs";
+import { MyJobsApply } from "./pages/MyJobsApply";
+import { MyPostsCompany } from "./pages/MyPostsCompany";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+<<<<<<< HEAD
 import { CompanyPost } from "./pages/CompanyPost";
+=======
+import { AdminRegisterPrueba } from "./pages/AdminRegisterPrueba";
+import { Navbar2 } from "./component/navbar2";
+>>>>>>> 8f68d4792408468c4c53637bfae453b49e2c0b28
 
 import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
@@ -31,7 +38,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
+          <Navbar2 />
           <Switch>
             <Route exact path="/">
               <FrontPage />
@@ -41,6 +48,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/RegistroAlumno">
               <UserRegister />
+            </Route>
+            <Route exact path="/RegistroAdmin">
+              <AdminRegisterPrueba />
             </Route>
             <Route exact path="/AccesoEmpresa">
               <CompanyLogin />
@@ -60,8 +70,16 @@ const Layout = () => {
             <Route exact path="/Buscador">
               <Jobs />
             </Route>
+<<<<<<< HEAD
             <Route exact path="/PublicarOferta">
               <CompanyPost />
+=======
+            <Route exact path="/TusPostulaciones">
+              <MyJobsApply />
+            </Route>
+            <Route exact path="/TusOfertas">
+              <MyPostsCompany />
+>>>>>>> 8f68d4792408468c4c53637bfae453b49e2c0b28
             </Route>
             <Route exact path="/single/:theid">
               <Single />

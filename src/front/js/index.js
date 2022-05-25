@@ -1,6 +1,7 @@
 //import react into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
+import JobsApplication from "./component/JobsApplyUser";
 import UserForm from "./component/UserRegisterForm";
 import CompanyForm from "./component/CompanyRegisterForm";
 import FrontPage from "./pages/FrontPage";
@@ -16,6 +17,11 @@ import "../styles/index.css";
 import Layout from "./layout";
 import { UserProfile } from "./pages/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile ";
+<<<<<<< HEAD
 import StudentApplications from "./pages/StudentApplications";
+=======
+
+
+>>>>>>> 8f68d4792408468c4c53637bfae453b49e2c0b28
 //render your react application
 ReactDOM.render(<Layout />, document.querySelector("#app"));
