@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_migrate import Migrate
-from models import db, Practicante, Administrador, Region, Provincia, Comuna, Empresa, Oferta, Postulacion
+from models import db, Practicante, Administrador, Comuna, Empresa, Oferta, Postulacion
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -112,25 +112,9 @@ def register_admin():
 
 #Devuelve todas las regiones
 
-@app.route('/region', methods=['GET'])
-def showRegion():
-    allRegion = Region.query.all()
-    allRegion = list(map(lambda x: x.serialize(), allRegion))
-
-    return jsonify(allRegion)
-
-@app.route('/provincia', methods=['GET'])
-def showProvincia():
-    region_id_req = request.json.get("region_id")
-    allProvincia = Provincia.query.filter_by(region_id = region_id_req)
-    allProvincia = list(map(lambda x: x.serialize(), allProvincia))
-
-    return jsonify(allProvincia)
-
 @app.route('/comuna', methods=['GET'])
 def showComuna():
-    comuna_id_req = request.json.get("provincia_id")
-    allComuna = Comuna.query.filter_by(provincia_id = comuna_id_req)
+    allComuna = Comuna.query.all()
     allComuna = list(map(lambda x: x.serialize(), allComuna))
 
     return jsonify(allComuna)

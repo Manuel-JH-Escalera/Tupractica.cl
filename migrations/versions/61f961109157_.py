@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 2610d807f328
+Revision ID: 61f961109157
 Revises: 
-Create Date: 2022-05-22 02:58:37.218737
+Create Date: 2022-05-25 15:39:05.301661
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2610d807f328'
+revision = '61f961109157'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,6 +27,11 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
+    op.create_table('comuna',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('nombre', sa.String(length=120), nullable=False),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('empresa',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('razon_social', sa.String(length=120), nullable=False),
@@ -37,25 +42,6 @@ def upgrade():
     sa.Column('telefono', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
-    )
-    op.create_table('region',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('nombre', sa.String(length=120), nullable=False),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('provincia',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('nombre', sa.String(length=120), nullable=False),
-    sa.Column('region_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['region_id'], ['region.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('comuna',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('nombre', sa.String(length=120), nullable=False),
-    sa.Column('provincia_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['provincia_id'], ['provincia.id'], ),
-    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('oferta',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -107,9 +93,7 @@ def downgrade():
     op.drop_table('postulacion')
     op.drop_table('practicante')
     op.drop_table('oferta')
-    op.drop_table('comuna')
-    op.drop_table('provincia')
-    op.drop_table('region')
     op.drop_table('empresa')
+    op.drop_table('comuna')
     op.drop_table('administrador')
     # ### end Alembic commands ###
