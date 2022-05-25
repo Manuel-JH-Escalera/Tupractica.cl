@@ -1,14 +1,27 @@
 import { faRegistered } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Errors } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
 const CompanyRegisterForm = () => {
-  /* preventDefault = () => {
-        preventDefault()
-    } */
+  const [characters, setCharacters] = useState([]);
+
+  const initialUrl =
+    "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/comuna";
+
+  const fetchCharacters = (initialUrl) => {
+    fetch(initialUrl)
+      .then((response) => response.json())
+      .then((data) => setCharacters(data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    fetchCharacters(initialUrl);
+  }, []);
+
   const {
     register,
     formState: { errors },
@@ -16,6 +29,19 @@ const CompanyRegisterForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    fetch(
+      "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/api/empresa-register",
+      {
+        method: "POST", // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error))
+      .then((response) => console.log("Success:", response));
     console.log(data);
   };
 
@@ -33,20 +59,20 @@ const CompanyRegisterForm = () => {
             <div className="row pb-1">
               <div className="col">
                 <label for="companyname" className="form-label">
-                  <b>Nombre de la Empresa</b>
+                  <b>Razón Social</b>
                 </label>
                 <span class="input-group">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Nombre de la Empresa"
+                    placeholder="Escriba su razón social"
                     aria-label="Nombre"
                     id="Nombre"
-                    {...register("nombre", {
+                    {...register("razon_social", {
                       required: true,
                     })}
                   />
-                  {errors.nombre?.type === "required" && (
+                  {errors.razon_social?.type === "required" && (
                     <span
                       className="input-group-text bg-white border-start-0"
                       id="basic-addon1"
@@ -55,8 +81,8 @@ const CompanyRegisterForm = () => {
                     </span>
                   )}
                 </span>
-                {errors.nombre?.type === "required" && (
-                  <p className="text-danger"> El nombre es requerido </p>
+                {errors.razon_social?.type === "required" && (
+                  <p className="text-danger"> La razón social es requerida </p>
                 )}
               </div>
             </div>
@@ -69,6 +95,7 @@ const CompanyRegisterForm = () => {
                 <span class="input-group">
                   <input
                     type="text"
+                    placeholder="Escriba su correo electronico"
                     className="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
@@ -107,6 +134,7 @@ const CompanyRegisterForm = () => {
                 <span class="input-group">
                   <input
                     type="password"
+                    placeholder="Escriba su contraseña"
                     className="form-control"
                     id="exampleInputPassword1"
                     {...register("password", { required: true })}
@@ -128,19 +156,20 @@ const CompanyRegisterForm = () => {
             <div className="row pb-1">
               <div className="col">
                 <label for="lastnameincharge" className="form-label">
-                  <b>Rut de la Empresa</b>
+                  <b>Número de Teléfono Celular</b>
                 </label>
                 <span class="input-group">
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
-                    id="rut"
-                    {...register("rut", {
-                      pattern: /^[0-9]+/,
+                    placeholder="Escriba su número de teléfono celular"
+                    id="telefono"
+                    {...register("telefono", {
                       required: true,
+                      min: 1, max: 9
                     })}
                   />
-                  {errors.rut?.type === "required" && (
+                  {errors.telefono?.type === "required" && (
                     <span
                       className="input-group-text bg-white border-start-0"
                       id="basic-addon1"
@@ -149,8 +178,8 @@ const CompanyRegisterForm = () => {
                     </span>
                   )}
                 </span>
-                {errors.rut?.type === "required" && (
-                  <p className="text-danger"> Su rut es requerido</p>
+                {errors.telefono?.type === "required" && (
+                  <p className="text-danger"> El número de telefono celular es requerido</p>
                 )}
               </div>
             </div>

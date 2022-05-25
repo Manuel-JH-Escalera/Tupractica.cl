@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
-import { useEffect } from "react/cjs/react.production.min";
-
-
+import { ComunasList } from "./ComunasList";
 
 const UserRegisterForm = () => {
+  const [characters, setCharacters] = useState([]);
 
-  fetch('https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io')
-  .then((response) => {
-    return response.json();
-  })
-  .then((myJson) => {
-    console.log(myJson);
-  });
-  
+  const initialUrl =
+    "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/comuna";
+
+  const fetchCharacters = (initialUrl) => {
+    fetch(initialUrl)
+      .then((response) => response.json())
+      .then((data) => setCharacters(data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    fetchCharacters(initialUrl);
+  }, []);
+
   const {
     register,
     formState: { errors },
@@ -23,16 +28,26 @@ const UserRegisterForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    fetch(
+      "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/api/user-register",
+      {
+        method: "POST", // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error))
+      .then((response) => console.log("Success:", response));
     console.log(data);
   };
 
   return (
     <div className="container w-50 ">
       <div className="row">
-        <form
-          className=" mt-3"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className=" mt-3" onSubmit={handleSubmit(onSubmit)}>
           <div className="fs-1 bg-white text-center">
             <h1> Registro Para Alumnos</h1>
           </div>
@@ -40,13 +55,13 @@ const UserRegisterForm = () => {
             <div className="row pb-1">
               <div className="col">
                 <label for="firstname" className="form-label">
-                  <b>Nombres</b>
+                  <b>Nombre</b>
                 </label>
                 <span class="input-group">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Nombre de alumno"
+                    placeholder="Escribe tu nombre"
                     aria-label="Nombre"
                     id="Nombre"
                     {...register("nombre", {
@@ -70,13 +85,13 @@ const UserRegisterForm = () => {
             <div className="row pb-1">
               <div className="col">
                 <label for="lastname" className="form-label">
-                  <b>Apellidos</b>
+                  <b>Apellido</b>
                 </label>
                 <span class="input-group">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Apellido"
+                    placeholder="Escribe tu Apellido"
                     aria-label="apellido"
                     id="apellido"
                     {...register("apellido", {
@@ -106,6 +121,7 @@ const UserRegisterForm = () => {
                   <input
                     type="text"
                     className="form-control"
+                    placeholder="Escribe tu email"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     {...register("email", {
@@ -143,6 +159,7 @@ const UserRegisterForm = () => {
                   <input
                     type="password"
                     className="form-control"
+                    placeholder="Escribe tu contraseña"
                     id="exampleInputPassword1"
                     {...register("password", { required: true })}
                   />
@@ -172,11 +189,11 @@ const UserRegisterForm = () => {
                     placeholder="date"
                     aria-label="Last name"
                     id="date"
-                    {...register("date", {
+                    {...register("fecha_nacimiento", {
                       required: true,
                     })}
                   />
-                  {errors.date?.type === "required" && (
+                  {errors.fecha_nacimiento?.type === "required" && (
                     <span
                       className="input-group-text bg-white border-start-0"
                       id="basic-addon1"
@@ -185,39 +202,9 @@ const UserRegisterForm = () => {
                     </span>
                   )}
                 </span>
-                {errors.date?.type === "required" && (
-                  <p className="text-danger"> El nombre es requerido </p>
+                {errors.fecha_nacimiento?.type === "required" && (
+                  <p className="text-danger">La fecha de nacimiento es requerida</p>
                 )}
-              </div>
-            </div>
-            <div className="row pb-1">
-              <div className="col">
-                <label for="region" className="form-label">
-                  <b>Region</b>
-                </label>
-                <select class="form-select" aria-label="Default select example" {...register("region", {
-                      required: true,
-                    })}>
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-            <div className="row pb-1">
-              <div className="col">
-                <label for="mail" className="form-label">
-                  <b>Provincia</b>
-                </label>
-                <select class="form-select" aria-label="Default select example" {...register("provincia", {
-                      required: true,
-                    })}>
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
               </div>
             </div>
             <div className="row pb-1">
@@ -226,15 +213,19 @@ const UserRegisterForm = () => {
                   <b>Comuna</b>
                 </label>
                 <span className="input-group">
-                  <select class="form-select" aria-label="Default select example" {...register("comuna", {
-                        required: true,
-                      })}>
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    placeholder="Selecciona tu comuna"
+                    {...register("comuna_id", { required: true })}
+                  >
+                    {characters.map((item, index) => (
+                      <option key={index} value={item.id}>
+                        {item.nombre}
+                      </option>
+                    ))}
                   </select>
-                  {errors.comuna?.type === "required" && (
+                  {errors.comuna_id?.type === "required" && (
                     <span
                       className="input-group-text bg-white border-start-0"
                       id="basic-addon1"
@@ -243,21 +234,15 @@ const UserRegisterForm = () => {
                     </span>
                   )}
                 </span>
-                {errors.comuna?.type === "required" && (
-                <p className="text-danger">
-                  {" "}
-                  La comuna es requerida{" "}
-                </p>
-              )}
+                {errors.comuna_id?.type === "required" && (
+                  <p className="text-danger">La comuna es requerida</p>
+                )}
               </div>
             </div>
           </div>
           <div className="">
             <div className="row d-md-flex gap-2">
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg mt-2"
-              >
+              <button type="submit" className="btn btn-primary btn-lg mt-2">
                 Registrame
               </button>
               <button type="reset" className="btn btn-secondary btn-lg">
@@ -270,7 +255,5 @@ const UserRegisterForm = () => {
     </div>
   );
 };
-
-
 
 export default UserRegisterForm;
