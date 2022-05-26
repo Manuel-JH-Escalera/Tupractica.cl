@@ -19,6 +19,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { AdminRegisterPrueba } from "./pages/AdminRegisterPrueba";
 import { Navbar2 } from "./component/navbar2";
+import { ApplyCompany } from "./pages/ApplyCompany";
 
 import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
@@ -73,6 +74,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/single/:theid">
               <Single />
+            </Route>
+            <Route exact path="/PublicacionEmpresa">
+              <ApplyCompany />
             </Route>
             <Route>
               <h1>Not found!</h1>
