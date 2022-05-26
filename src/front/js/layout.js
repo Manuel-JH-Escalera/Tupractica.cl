@@ -17,16 +17,13 @@ import { MyPostsCompany } from "./pages/MyPostsCompany";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-<<<<<<< HEAD
-import { CompanyPost } from "./pages/CompanyPost";
-=======
 import { AdminRegisterPrueba } from "./pages/AdminRegisterPrueba";
 import { Navbar2 } from "./component/navbar2";
->>>>>>> 8f68d4792408468c4c53637bfae453b49e2c0b28
 
 import { Navbar } from "./component/Navbar";
 import { Footer } from "./component/footer";
 import { StudentApplications } from "./pages/StudentApplications";
+import { ApplyCompany } from "./pages/ApplyCompany";
 
 //create your first component
 const Layout = () => {
@@ -70,22 +67,20 @@ const Layout = () => {
             <Route exact path="/Buscador">
               <Jobs />
             </Route>
-<<<<<<< HEAD
-            <Route exact path="/PublicarOferta">
-              <CompanyPost />
-=======
             <Route exact path="/TusPostulaciones">
               <MyJobsApply />
             </Route>
             <Route exact path="/TusOfertas">
               <MyPostsCompany />
->>>>>>> 8f68d4792408468c4c53637bfae453b49e2c0b28
             </Route>
             <Route exact path="/single/:theid">
               <Single />
             </Route>
             <Route exact path="/MisPostulaciones">
               <StudentApplications />
+            </Route>
+            <Route exact path="/PublicacionEmpresa">
+              <ApplyCompany />
             </Route>
             <Route>
               <h1>Not found!</h1>

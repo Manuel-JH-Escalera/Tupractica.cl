@@ -13,4 +13,4 @@ function Jobs() {
   );
 }
 
-export {Jobs};
+export { Jobs };

@@ -110,6 +110,13 @@ def register_admin():
 
     return jsonify(administrador.serialize())
 
+
+
+
+
+
+
+
 #Devuelve todas las regiones
 
 @app.route('/region', methods=['GET'])

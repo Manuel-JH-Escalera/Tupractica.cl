@@ -11,6 +11,19 @@ const Publicar = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    fetch(
+      "https://5000-anyelinapar-proyectofin-fotcafxhx0j.ws-us46.gitpod.io/create-oferta",
+      {
+        method: "POST", // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error))
+      .then((response) => console.log("Success:", response));
     console.log(data);
   };
 
@@ -24,20 +37,20 @@ const Publicar = () => {
               <div className="col-sm-12 mt-3">
                 <div className="form-group">
                   <label for="title" className="control-label">
-                    Puesto / Título del aviso:
+                    Título :
                   </label>
                   <span className="input-group">
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Puesto / Título del aviso"
-                      aria-label="puesto"
-                      id="puesto"
-                      {...register("puesto", {
+                      placeholder="Título del aviso"
+                      aria-label="titulo"
+                      id="titulo"
+                      {...register("titulo", {
                         required: true,
                       })}
                     />
-                    {errors.puesto?.type === "required" && (
+                    {errors.titulo?.type === "required" && (
                       <span
                         className="input-group-text bg-white border-start-0"
                         id="basic-addon1"
@@ -46,51 +59,14 @@ const Publicar = () => {
                       </span>
                     )}
                   </span>
-                  {errors.puesto?.type === "required" && (
-                    <p className="text-danger"> Ingresa Puesto de Trabajo </p>
+                  {errors.titulo?.type === "required" && (
+                    <p className="text-danger"> Ingresa Título del aviso </p>
                   )}
                 </div>
               </div>
             </div>
-
-            <div className="row">
-              <div className="col-sm-12 mt-2">
-                <div className="form-group m-0">
-                  <label for="descripcion" className="control-label">
-                    Descripción del puesto:
-                  </label>
-                  <span className="input-group">
-                    <textarea
-                      type="text"
-                      className="form-control"
-                      placeholder="Descripción del puesto"
-                      aria-label="Descripción del puesto"
-                      id="descripción"
-                      {...register("descripción", {
-                        required: true,
-                      })}
-                    />
-                    {errors.descripción?.type === "required" && (
-                      <span
-                        className="input-group-text bg-white border-start-0"
-                        id="basic-addon1"
-                      >
-                        <AiFillCloseCircle className="fs-4 text-danger" />
-                      </span>
-                    )}
-                  </span>
-                  {errors.descripción?.type === "required" && (
-                    <p className="text-danger">
-                      {" "}
-                      Ingresa descripcion del trabajo{" "}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-6 mt-2">
+            <div class="row">
+              <div class="col-sm-6">
                 <div className="form-group">
                   <label for="area" className="control-label">
                     Carrera:
@@ -104,11 +80,11 @@ const Publicar = () => {
                       placeholder=" Carrera"
                       aria-label=" Carrera"
                       id=" Carrera"
-                      {...register("Carrera", {
+                      {...register("carrera_requerida", {
                         required: true,
                       })}
                     />
-                    {errors.Carrera?.type === "required" && (
+                    {errors.carrera_requerida?.type === "required" && (
                       <span
                         className="input-group-text bg-white border-start-0"
                         id="basic-addon1"
@@ -117,18 +93,116 @@ const Publicar = () => {
                       </span>
                     )}
                   </span>
-                  {errors.Carrera?.type === "required" && (
+                  {errors.carrera_requerida?.type === "required" && (
                     <p className="text-danger"> Ingresa Carrera </p>
                   )}
                 </div>
               </div>
 
-              <div className="col-6 mt-2">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div className="form-group">
+                    <label for="area" className="control-label">
+                      Area:
+                    </label>
+
+                    <span className="input-group">
+                      <input
+                        type="text"
+                        rows="6"
+                        className="form-control"
+                        placeholder=" area"
+                        aria-label=" area"
+                        id=" area"
+                        {...register("area", {
+                          required: true,
+                        })}
+                      />
+                      {errors.area?.type === "required" && (
+                        <span
+                          className="input-group-text bg-white border-start-0"
+                          id="basic-addon1"
+                        >
+                          <AiFillCloseCircle className="fs-4 text-danger" />
+                        </span>
+                      )}
+                    </span>
+                    {errors.area?.type === "required" && (
+                      <p className="text-danger"> Ingresa Carrera </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="date" className="form-label">
+                  <b>Fecha de Inicio</b>
+                </label>
+                <span class="input-group">
+                  <input
+                    type="date"
+                    className="form-control"
+                    placeholder="date"
+                    aria-label="Fecha de inicio"
+                    id="date"
+                    {...register("fecha_inicio", {
+                      required: true,
+                    })}
+                  />
+                  {errors.fecha_inicio?.type === "required" && (
+                    <span
+                      className="input-group-text bg-white border-start-0"
+                      id="basic-addon1"
+                    >
+                      <AiFillCloseCircle className="fs-4 text-danger" />
+                    </span>
+                  )}
+                </span>
+                {errors.fecha_inicio?.type === "required" && (
+                  <p className="text-danger"> El nombre es requerido </p>
+                )}
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div className="form-group">
+                    <label for="date" className="form-label">
+                      <b>Fecha de Termino</b>
+                    </label>
+                    <span class="input-group">
+                      <input
+                        type="date"
+                        className="form-control"
+                        placeholder="fechatermino"
+                        aria-label="Fecha de Termino"
+                        id="fecha termino"
+                        {...register("fecha_termino", {
+                          required: true,
+                        })}
+                      />
+                      {errors.fecha_termino?.type === "required" && (
+                        <span
+                          className="input-group-text bg-white border-start-0"
+                          id="basic-addon1"
+                        >
+                          <AiFillCloseCircle className="fs-4 text-danger" />
+                        </span>
+                      )}
+                    </span>
+                    {errors.fecha_termino?.type === "required" && (
+                      <p className="text-danger"> El nombre es requerido </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
                 <div className="form-group">
                   <label for="subarea" className="control-label">
                     Comuna:
                   </label>
-
                   <span className="input-group">
                     <input
                       type="text"
@@ -137,11 +211,11 @@ const Publicar = () => {
                       placeholder="Comuna"
                       aria-label="Comuna"
                       id="Comuna"
-                      {...register("Comuna", {
+                      {...register("comuna_id", {
                         required: true,
                       })}
                     />
-                    {errors.Comuna?.type === "required" && (
+                    {errors.comuna_id?.type === "required" && (
                       <span
                         className="input-group-text bg-white border-start-0"
                         id="basic-addon1"
@@ -150,23 +224,46 @@ const Publicar = () => {
                       </span>
                     )}
                   </span>
-                  {errors.Comuna?.type === "required" && (
+                  {errors.comuna_id?.type === "required" && (
                     <p className="text-danger"> Ingresa tu Comuna </p>
                   )}
                 </div>
               </div>
-            </div>
-            <div className="form-check mt-2">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="salario"
-                {...register("salario", {})}
-              />
-              <label className="form-check-label" for="flexCheckDefault">
-                Percibe Salario
-              </label>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div className="form-group">
+                    <label for="area" className="control-label">
+                      Empresa:
+                    </label>
+
+                    <span className="input-group">
+                      <input
+                        type="text"
+                        rows="6"
+                        className="form-control"
+                        placeholder=" empresa"
+                        aria-label=" empresa"
+                        id=" empresa"
+                        {...register("empresa_id", {
+                          required: true,
+                        })}
+                      />
+                      {errors.empresa_id?.type === "required" && (
+                        <span
+                          className="input-group-text bg-white border-start-0"
+                          id="basic-addon1"
+                        >
+                          <AiFillCloseCircle className="fs-4 text-danger" />
+                        </span>
+                      )}
+                    </span>
+                    {errors.empresa_id?.type === "required" && (
+                      <p className="text-danger"> Ingresa Empresa </p>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="row pt-5">
