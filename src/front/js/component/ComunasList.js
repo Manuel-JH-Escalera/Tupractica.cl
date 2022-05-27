@@ -4,7 +4,7 @@ import FormatoInfo2 from "./FormatoInfo2";
 export const ComunasList = props => {
 	const [characters, setCharacters] = useState([]);
 
-	const initialUrl = "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/comuna"
+	const initialUrl = "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/comuna"
 
 	const fetchCharacters = (initialUrl) =>{
 		fetch (initialUrl)
