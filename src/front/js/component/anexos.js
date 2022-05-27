@@ -8,7 +8,7 @@ function Anexos() {
       </div>
       <div className="row justify-content-start">
         <div className="col-3">
-          <label>Anexo 1:</label>
+          <label>hablar:</label>
         </div>
         <div className="col-9">
           {" "}
