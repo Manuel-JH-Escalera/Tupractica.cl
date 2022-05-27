@@ -2,6 +2,7 @@ import { faRegistered } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect, useContext } from "react";
 import { Errors } from "react-hook-form";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
@@ -30,7 +31,7 @@ const CompanyRegisterForm = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/api/empresa-register",
+      "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/api/empresa-register",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
@@ -40,8 +41,12 @@ const CompanyRegisterForm = () => {
       }
     )
       .then((res) => res.json())
-      .catch((error) => console.error("Error:", error))
-      .then((response) => console.log("Success:", response));
+      .then((response) => {
+        console.log("Success:", response);
+        Swal.fire("Registro Exitoso");
+      })
+      .catch((error) => console.error("Error:", error));
+
     console.log(data);
   };
 
@@ -166,7 +171,6 @@ const CompanyRegisterForm = () => {
                     id="telefono"
                     {...register("telefono", {
                       required: true,
-                      min: 1, max: 9
                     })}
                   />
                   {errors.telefono?.type === "required" && (
@@ -179,17 +183,17 @@ const CompanyRegisterForm = () => {
                   )}
                 </span>
                 {errors.telefono?.type === "required" && (
-                  <p className="text-danger"> El número de telefono celular es requerido</p>
+                  <p className="text-danger">
+                    {" "}
+                    El número de telefono celular es requerido
+                  </p>
                 )}
               </div>
             </div>
           </div>
           <div className="">
             <div className="row d-md-flex gap-2 justify-content-center">
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg mt-2" 
-              >
+              <button type="submit" className="btn btn-primary btn-lg mt-2">
                 Registrame
               </button>
               <button type="reset" className="btn btn-secondary btn-lg">
