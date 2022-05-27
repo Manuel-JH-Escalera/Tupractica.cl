@@ -3,12 +3,13 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { ComunasList } from "./ComunasList";
+import Swal from "sweetalert2";
 
 const UserRegisterForm = () => {
   const [characters, setCharacters] = useState([]);
 
   const initialUrl =
-    "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/comuna";
+    "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/comuna";
 
   const fetchCharacters = (initialUrl) => {
     fetch(initialUrl)
@@ -29,7 +30,7 @@ const UserRegisterForm = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/api/user-register",
+      "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/api/user-register",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
@@ -39,8 +40,12 @@ const UserRegisterForm = () => {
       }
     )
       .then((res) => res.json())
-      .catch((error) => console.error("Error:", error))
-      .then((response) => console.log("Success:", response));
+      .then((response) => {
+        console.log("Success:", response);
+        Swal.fire("Registro Exitoso");
+      })
+      .catch((error) => console.error("Error:", error));
+
     console.log(data);
   };
 
@@ -203,7 +208,9 @@ const UserRegisterForm = () => {
                   )}
                 </span>
                 {errors.fecha_nacimiento?.type === "required" && (
-                  <p className="text-danger">La fecha de nacimiento es requerida</p>
+                  <p className="text-danger">
+                    La fecha de nacimiento es requerida
+                  </p>
                 )}
               </div>
             </div>

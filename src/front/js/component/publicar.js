@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import Swal from "sweetalert2";
 
 const Publicar = () => {
+  const [characters, setCharacters] = useState([]);
+
+  const initialUrl =
+    "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/comuna";
+
+  const fetchCharacters = (initialUrl) => {
+    fetch(initialUrl)
+      .then((response) => response.json())
+      .then((data) => setCharacters(data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    fetchCharacters(initialUrl);
+  }, []);
+
   const {
     register,
     formState: { errors },
@@ -13,7 +29,7 @@ const Publicar = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us46.gitpod.io/create-oferta",
+      "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/create-oferta",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
@@ -202,24 +218,26 @@ const Publicar = () => {
                 </div>
               </div>
             </div>
+
             <div class="row">
               <div class="col-sm-6">
                 <div className="form-group">
-                  <label for="subarea" className="control-label">
-                    Comuna:
+                  <label for="comuna" className="form-label">
+                    <b>Comuna</b>
                   </label>
                   <span className="input-group">
-                    <input
-                      type="text"
-                      rows="6"
-                      className="form-control"
-                      placeholder="Comuna"
-                      aria-label="Comuna"
-                      id="Comuna"
-                      {...register("comuna_id", {
-                        required: true,
-                      })}
-                    />
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      placeholder="Selecciona tu comuna"
+                      {...register("comuna_id", { required: true })}
+                    >
+                      {characters.map((item, index) => (
+                        <option key={index} value={item.id}>
+                          {item.nombre}
+                        </option>
+                      ))}
+                    </select>
                     {errors.comuna_id?.type === "required" && (
                       <span
                         className="input-group-text bg-white border-start-0"
@@ -230,7 +248,7 @@ const Publicar = () => {
                     )}
                   </span>
                   {errors.comuna_id?.type === "required" && (
-                    <p className="text-danger"> Ingresa tu Comuna </p>
+                    <p className="text-danger">La comuna es requerida</p>
                   )}
                 </div>
               </div>
