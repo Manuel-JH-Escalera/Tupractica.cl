@@ -13,7 +13,7 @@ const Publicar = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-anyelinapar-proyectofin-fotcafxhx0j.ws-us46.gitpod.io/create-oferta",
+      "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us46.gitpod.io/create-oferta",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
