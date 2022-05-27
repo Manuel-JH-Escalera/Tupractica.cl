@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify, render_template
 from flask_migrate import Migrate
 from models import db, Practicante, Administrador, Comuna, Empresa, Oferta, Postulacion
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required
+from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -9,9 +12,12 @@ app.config['DEBUG'] = True
 app.config['ENV'] = 'development'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['JWT_SECRET_KEY'] = '33b9b3de94a42d19f47df7021954eaa8' #secret-key
 
 db.init_app(app)
 Migrate(app, db)
+
+jwt = JWTManager(app)
 
 @app.route('/')
 def root():
@@ -178,6 +184,37 @@ def showPostulacion_id():
     postulacion = list(map(lambda x: x.serialize(), postulacion))
 
     return jsonify(postulacion)
+
+#Login
+@app.route('/Login', methods=['POST'])
+def login():
+    username = request.json.get('username')
+    password = request.json.get('password')
+
+    practicante = Practicante.query.filter_by(email=username).first()
+
+    if not practicante: return jsonify({"status": "fail", "message": "username/password incorrect" }), 401
+
+    expires = datetime.timedelta(minutes=10)
+    acces_token = create_access_token(identity=practicante.id, expires_delta=expires)
+
+    data = {
+        "status": "succes",
+        "message": "Login Succesfully",
+        "acces_token": acces_token,
+        "user": practicante.serialize()
+    }
+    return jsonify(data), 200
+
+#Profile
+@app.route('/Profile', methods=['GET'])
+@jwt_required()
+def profile():
+
+    id = get_jwt_identity()
+    practicante = Practicante.query.get(id)
+
+    return jsonify(practicante.serialize()), 200
 
 if __name__ == '__main__':
     app.run()
