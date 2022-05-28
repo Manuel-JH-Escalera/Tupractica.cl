@@ -66,6 +66,7 @@ def create_oferta():
     titulo = request.json.get("titulo")
     area = request.json.get("area")
     carrera_requerida = request.json.get("carrera_requerida")
+    descripcion = request.json.get("descripcion")
     fecha_inicio = request.json.get("fecha_inicio")
     fecha_termino = request.json.get("fecha_termino")
     comuna_id = request.json.get("comuna_id")
@@ -75,6 +76,7 @@ def create_oferta():
     oferta.titulo = titulo
     oferta.area = area
     oferta.carrera_requerida = carrera_requerida
+    oferta.descripcion = descripcion
     oferta.fecha_inicio = fecha_inicio
     oferta.fecha_termino = fecha_termino
     oferta.comuna_id = comuna_id

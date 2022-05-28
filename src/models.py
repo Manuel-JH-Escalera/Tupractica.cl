@@ -111,7 +111,7 @@ class Oferta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(120), nullable=False)
     area = db.Column(db.String(120), nullable=False)
-    descripcion = db.Column(db.String(500), nullable=True)
+    descripcion = db.Column(db.String(500), nullable=False)
     carrera_requerida = db.Column(db.String(120), nullable=False)
     fecha_inicio = db.Column(db.String(120), nullable=False)
     fecha_termino = db.Column(db.String(120), nullable=False)
