@@ -213,11 +213,188 @@ def update_empresa(id):
 
     data = {
         "code": 200,
-        "msg": "empresa actualizada",
+        "msg": "Empresa actualizada",
         "empresa": empresa.serialize()
     }
 
     return jsonify(data), 200
+
+@app.route('/api/empresa-register/<int:id>', methods=['DELETE'])
+def delete_empresa(id):
+    empresa = Empresa.query.get(id)
+    if not empresa: return jsonify({"msg": "La empresa no existe"}), 404
+    empresa.delete()
+
+    data = {
+         "code": 200,
+         "msg": "Empresa borrada"
+    }
+    return jsonify(data)
+
+@app.route('/api/admin-register/<int:id>', methods=['PUT'])
+def update_admin(id):
+    nombre = request.json.get("nombre")
+    if not nombre: return jsonify({"msg": "Nombre es requerido"}), 400
+    apellido = request.json.get("apellido")
+    if not apellido: return jsonify({"msg": "Apellido es requerido"}), 400
+    email = request.json.get("email")
+    if not email: return jsonify({"msg": "Email es requerido"}), 400
+
+    administrador = Administrador.query.get(id)
+    if not administrador: return jsonify({"msg": "El administrador no existe"}), 404
+
+    email_exist = Administrador.query.filter_by(email=email).first()
+    if email_exist and email_exist.id != id: return jsonify({"msg": "Este email ya esta siendo utilizado" %email_exist.id}), 400
+
+    administrador.nombre = nombre
+    administrador.apellido = apellido
+    administrador.email = email
+    administrador.update()
+
+    data = {
+        "code": 200,
+        "msg": "Administrador actualizado",
+        "administrador": administrador.serialize()
+    }
+
+    return jsonify(data), 200
+
+@app.route('/api/admin-register/<int:id>', methods=['DELETE'])
+def delete_admin(id):
+    administrador = Administrador.query.get(id)
+    if not administrador: return jsonify({"msg": "El administrador no existe"}), 404
+    administrador.delete()
+
+    data = {
+         "code": 200,
+         "msg": "Administrador borrado"
+    }
+    return jsonify(data)
+
+@app.route('/api/user-register/<int:id>', methods=['PUT'])
+def update_user(id):
+    nombre = request.json.get("nombre")
+    if not nombre: return jsonify({"msg": "Nombre es requerido"}), 400
+    apellido = request.json.get("apellido")
+    if not apellido: return jsonify({"msg": "Apellido es requerido"}), 400
+    email = request.json.get("email")
+    if not email: return jsonify({"msg": "Email es requerido"}), 400
+    fecha_nacimiento = request.json.get("fecha_nacimiento")
+    if not fecha_nacimiento: return jsonify({"msg": "Fecha de nacimiento es requerido"}), 400
+    institucion = request.json.get("institucion")
+    foto_perfil = request.json.get("foto_perfil")
+    biografia = request.json.get("biografia")
+    carrera_estudio = request.json.get("carrera_estudio")
+    telefono = request.json.get("telefono")
+    anexo1 = request.json.get("anexo1")
+    anexo2 = request.json.get("anexo2")
+    comuna_id = request.json.get("comuna_id")
+    if not comuna_id: return jsonify({"msg": "Comuna es requerida"}), 400
+
+    practicante = Practicante.query.get(id)
+    if not practicante: return jsonify({"msg": "El practicante no existe"}), 404
+
+    email_exist = Practicante.query.filter_by(email=email).first()
+    if email_exist and email_exist.id != id: return jsonify({"msg": "Este email ya esta siendo utilizado" %email_exist.id}), 400
+
+    practicante.nombre = nombre
+    practicante.apellido = apellido
+    practicante.email = email
+    practicante.fecha_nacimiento = fecha_nacimiento
+    practicante.institucion = institucion
+    practicante.foto_perfil = foto_perfil
+    practicante.biografia = biografia
+    practicante.carrera_estudio = carrera_estudio
+    practicante.telefono = telefono
+    practicante.anexo1 = anexo1
+    practicante.anexo2 = anexo2
+    practicante.comuna_id = comuna_id
+    practicante.update()
+
+    data = {
+        "code": 200,
+        "msg": "Practicante actualizado",
+        "practicante": practicante.serialize()
+    }
+
+    return jsonify(data), 200
+
+@app.route('/api/user-register/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    practicante = Practicante.query.get(id)
+    if not practicante: return jsonify({"msg": "El practicante no existe"}), 404
+    practicante.delete()
+
+    data = {
+         "code": 200,
+         "msg": "Practicante borrado"
+    }
+    return jsonify(data)
+
+@app.route('/create-oferta/<int:id>', methods=['PUT'])
+def update_oferta(id):
+    titulo = request.json.get("titulo")
+    if not titulo: return jsonify({"msg": "titulo es requerido"}), 400
+    area = request.json.get("area")
+    if not area: return jsonify({"msg": "area es requeridadescripcion"}), 400
+    descripcion = request.json.get("descripcion")
+    if not descripcion: return jsonify({"msg": "descripcion es requerida"}), 400
+    carrera_requerida = request.json.get("carrera_requerida")
+    if not carrera_requerida: return jsonify({"msg": "carrera requerida es requerida"}), 400
+    fecha_inicio = request.json.get("fecha_inicio")
+    if not fecha_inicio: return jsonify({"msg": "fecha inicio es requerida"}), 400
+    fecha_termino = request.json.get("fecha_termino")
+    if not fecha_termino: return jsonify({"msg": "fecha termino es requerida"}), 400
+    comuna_id = request.json.get("comuna_id")
+    if not comuna_id: return jsonify({"msg": "Comuna es requerida"}), 400
+    empresa_id = request.json.get("empresa_id")
+    if not empresa_id: return jsonify({"msg": "empresa es requerida"}), 400
+
+    oferta = Oferta.query.get(id)
+    if not oferta: return jsonify({"msg": "La oferta no existe"}), 404
+
+    oferta.titulo = titulo
+    oferta.area = area
+    oferta.descripcion = descripcion
+    oferta.carrera_requerida = carrera_requerida
+    oferta.fecha_inicio = fecha_inicio
+    oferta.fecha_termino = fecha_termino
+    oferta.comuna_id =comuna_id
+    oferta.empresa_id = empresa_id
+    oferta.update()
+
+    data = {
+        "code": 200,
+        "msg": "oferta actualizado",
+        "oferta": oferta.serialize()
+    }
+
+    return jsonify(data), 200
+
+@app.route('/create-oferta/<int:id>', methods=['DELETE'])
+def delete_oferta(id):
+    oferta = Oferta.query.get(id)
+    if not oferta: return jsonify({"msg": "La oferta no existe"}), 404
+    oferta.delete()
+
+    data = {
+         "code": 200,
+         "msg": "Oferta borrada"
+    }
+    return jsonify(data)
+
+@app.route('/generate-postulacion/<int:id>', methods=['DELETE'])
+def delete_postulacion(id):
+    postulacion= Postulacion.query.get(id)
+    if not postulacion: return jsonify({"msg": "La postulacion no existe"}), 404
+    postulacion.delete()
+
+    data = {
+         "code": 200,
+         "msg": "Postulacion borrada"
+    }
+    return jsonify(data)
+
 #Login
 @app.route('/Login', methods=['POST'])
 def login():
