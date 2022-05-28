@@ -42,7 +42,7 @@ def register_user():
 
     practicante.save()
 
-    return jsonify(practicante.serialize())
+    return jsonify(practicante.serialize()), 200
 
 @app.route('/api/empresa-register', methods=['POST'])
 def register_empresa():
@@ -59,7 +59,7 @@ def register_empresa():
    
     empresa.save()
 
-    return jsonify(empresa.serialize())
+    return jsonify(empresa.serialize()), 200
 
 @app.route('/create-oferta', methods=['POST'])
 def create_oferta():
@@ -84,7 +84,7 @@ def create_oferta():
    
     oferta.save()
 
-    return jsonify(oferta.serialize())
+    return jsonify(oferta.serialize()), 200
 
 @app.route('/generate-postulacion', methods=['POST'])
 def generate_postulacion():
@@ -99,7 +99,7 @@ def generate_postulacion():
    
     postulacion.save()
 
-    return jsonify(postulacion.serialize())
+    return jsonify(postulacion.serialize()), 200
 
 @app.route('/api/admin-register', methods=['POST'])
 def register_admin():
@@ -116,7 +116,7 @@ def register_admin():
 
     administrador.save()
 
-    return jsonify(administrador.serialize())
+    return jsonify(administrador.serialize()), 200
 
 #Devuelve todas las regiones
 
@@ -125,14 +125,14 @@ def showComuna():
     allComuna = Comuna.query.all()
     allComuna = list(map(lambda x: x.serialize(), allComuna))
 
-    return jsonify(allComuna)
+    return jsonify(allComuna), 200
 
 @app.route('/practicante', methods=['GET'])
 def showPracticante():
     allPracticante = Practicante.query.all()
     allPracticante = list(map(lambda x: x.serialize(), allPracticante))
 
-    return jsonify(allPracticante)
+    return jsonify(allPracticante), 200
 
 @app.route('/practicante-id', methods=['GET'])
 def showPracticante_id():
@@ -147,7 +147,7 @@ def showEmpresa():
     allEmpresa = Empresa.query.all()
     allEmpresa = list(map(lambda x: x.serialize(), allEmpresa))
 
-    return jsonify(allEmpresa)
+    return jsonify(allEmpresa), 200
 
 @app.route('/empresa-id', methods=['GET'])
 def showEmpresa_id():
@@ -162,7 +162,7 @@ def showOferta():
     allOferta = Oferta.query.all()
     allOferta = list(map(lambda x: x.serialize(), allOferta))
 
-    return jsonify(allOferta)
+    return jsonify(allOferta), 200
 
 @app.route('/oferta-id', methods=['GET'])
 def showOferta_id():
@@ -170,14 +170,14 @@ def showOferta_id():
     oferta = Oferta.query.filter_by(id = oferta_id)
     oferta = list(map(lambda x: x.serialize(), oferta))
 
-    return jsonify(oferta)
+    return jsonify(oferta), 200
 
 @app.route('/postulacion', methods=['GET'])
 def showPostulacion():
     allPostulacion = Postulacion.query.all()
     allPostulacion = list(map(lambda x: x.serialize(), allPostulacion))
 
-    return jsonify(allPostulacion)
+    return jsonify(allPostulacion), 200
 
 @app.route('/postulacion-id', methods=['GET'])
 def showPostulacion_id():
@@ -185,8 +185,39 @@ def showPostulacion_id():
     postulacion = Postulacion.query.filter_by(id = postulacion_id)
     postulacion = list(map(lambda x: x.serialize(), postulacion))
 
-    return jsonify(postulacion)
+    return jsonify(postulacion), 200
 
+@app.route('/api/empresa-register/<int:id>', methods=['PUT'])
+def update_empresa(id):
+    razon_social = request.json.get("razon_social")
+    if not razon_social: return jsonify({"msg": "Razon social es requerida"}), 400
+    email = request.json.get("email")
+    if not email: return jsonify({"msg": "Email es requerido"}), 400
+    foto_perfil = request.json.get("foto_perfil")
+    biografia = request.json.get("biografia")
+    telefono = request.json.get("telefono")
+    if not telefono: return jsonify({"msg": "telefono es requerido"}), 400
+
+    empresa = Empresa.query.get(id)
+    if not empresa: return jsonify({"msg": "La empresa no existe"}), 404
+
+    empresa_exist = Empresa.query.filter_by(razon_social=razon_social).first()
+    if empresa_exist and empresa_exist.id != id: return jsonify({"msg": "La empresa ya existe" %empresa_exist.id}), 400
+
+    empresa.razon_social = razon_social
+    empresa.email = email
+    empresa.foto_perfil = foto_perfil
+    empresa.biografia = biografia
+    empresa.telefono = telefono
+    empresa.update()
+
+    data = {
+        "code": 200,
+        "msg": "empresa actualizada",
+        "empresa": empresa.serialize()
+    }
+
+    return jsonify(data), 200
 #Login
 @app.route('/Login', methods=['POST'])
 def login():
