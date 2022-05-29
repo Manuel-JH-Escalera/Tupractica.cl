@@ -1,5 +1,5 @@
 import React from "react";
-function AddressData() {
+function AddressData({info=[]}) {
   return (
     <div className="container">
       <div className="row justify-content-start pt-5">
@@ -15,7 +15,7 @@ function AddressData() {
         <div className="col-3">
           <label>Comuna:</label>
         </div>
-        <div className="col-9">2e2</div>
+        <div className="col-9">{info.comuna_id}</div>
       </div>
     </div>
   );

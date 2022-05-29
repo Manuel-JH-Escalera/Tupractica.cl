@@ -11,7 +11,15 @@ const stylesb = {
   color: "white",
 };
 
+
 export const Navbar2 = () => {
+  
+  const LogOut = () => {
+    sessionStorage.removeItem("jwt-token")
+    console.log("login out")
+    
+  }
+  
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-light rounded"
@@ -90,6 +98,8 @@ export const Navbar2 = () => {
             <Link to="/AccesoEmpresa" style={stylesb}>
               Acceso Empresa
             </Link>
+          </button>
+          <button type="button" className="btn btn-primary" onClick={LogOut}><Link to="/" style={stylesb}>Cerrar Sesión</Link>
           </button>
         </div>
       </div>

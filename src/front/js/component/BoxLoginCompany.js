@@ -12,11 +12,33 @@ const stylesb = {
 
 const Login = () => {
 
-    const { register, formState: { errors }, handleSubmit} = useForm();
-
-
-    const onSubmit = (data) => {
-        console.log(data);
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+      } = useForm();
+    
+      const onSubmit = async (dataLogin) => {
+        const resp = await fetch(`https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/LoginEmpresa`, { 
+             method: "POST",
+             headers: { "Content-Type": "application/json" },
+             body: JSON.stringify(dataLogin) 
+        })
+    
+        if(!resp.ok) throw Error("There was a problem in the login request")
+    
+        if(resp.status === 401){
+             throw("Invalid credentials")
+        }
+        else if(resp.status === 400){
+             throw ("Invalid email or password format")
+        }
+        const data = await resp.json()
+        // save your token in the localStorage
+       //also you should set your user into the store using the setStore function
+        sessionStorage.setItem("jwt-token", data.acces_token);
+    
+        return data
     }
 
     return <div className="container w-50 mt-3 ">
@@ -26,13 +48,13 @@ const Login = () => {
             <div className="mb-3">
                 <label for="exampleInputEmail1" className="form-label">Correo Electronico:</label>
                 <span class="input-group">
-                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" {...register("email", {
+                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" {...register("username", {
                         required: true,
                         pattern: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ })}/>
-                    { errors.email?.type === "required" && <span className="input-group-text bg-white border-start-0" id="basic-addon1" ><AiFillCloseCircle className="fs-4 text-danger"/></span>}
+                    { errors.username?.type === "required" && <span className="input-group-text bg-white border-start-0" id="basic-addon1" ><AiFillCloseCircle className="fs-4 text-danger"/></span>}
                 </span>
-                    { errors.email?.type === "pattern" && <label className="text-danger">El formato del email no es valido</label>}
-                    { errors.email?.type === "required" && <label className="text-danger">Ingresa tu correo electronico</label>}
+                    { errors.username?.type === "pattern" && <label className="text-danger">El formato del email no es valido</label>}
+                    { errors.username?.type === "required" && <label className="text-danger">Ingresa tu correo electronico</label>}
             </div>
             <div className="mb-3 pt-3">
                 <label for="exampleInputPassword1" className="form-label">Contraseña:</label>

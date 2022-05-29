@@ -1,10 +1,10 @@
 import React from "react"
 
-const Bio = () => {
+const Bio = ({info=[]}) => {
 
     return <div className="container w-50 mt-2 ">
-        <h3 className="text-center">Nombre</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex</p>
+        <h3 className="text-center">{info.nombre + " " + info.apellido}</h3>
+        <p>{info.biografia}</p>
     </div>
 }
 
