@@ -279,7 +279,7 @@ def delete_admin(id):
     }
     return jsonify(data)
 
-@app.route('/api/user-register/<int:id>', methods=['PUT'])
+@app.route('/api/user-register/edit', methods=['PUT'])
 def update_user(id):
     nombre = request.json.get("nombre")
     if not nombre: return jsonify({"msg": "Nombre es requerido"}), 400
@@ -404,8 +404,8 @@ def delete_postulacion(id):
     return jsonify(data)
 
 #Login
-@app.route('/Login', methods=['POST'])
-def login():
+@app.route('/LoginPracticante', methods=['POST'])
+def loginPracticante():
     username = request.json.get('username')
     password = request.json.get('password')
 
@@ -425,10 +425,32 @@ def login():
     }
     return jsonify(data), 200
 
+@app.route('/LoginEmpresa', methods=['POST'])
+def loginEmpresa():
+    username = request.json.get('username')
+    password = request.json.get('password')
+
+    empresa = Empresa.query.filter_by(email=username).first()
+
+    if not empresa: return jsonify({"status": "fail", "message": "username/password incorrect" }), 401
+    if not check_password_hash(empresa.password, password): return jsonify({"status": "fail", "message": "username/password incorrect"})
+
+    expires = datetime.timedelta(minutes=60)
+    acces_token = create_access_token(identity=empresa.id, expires_delta=expires)
+
+    data = {
+        "status": "succes",
+        "message": "Login Succesfully",
+        "acces_token": acces_token,
+        "user": empresa.serialize()
+    }
+    return jsonify(data), 200
+
+
 #Profile
-@app.route('/Profile', methods=['GET'])
+@app.route('/ProfilePractiante', methods=['GET'])
 @jwt_required()
-def profile():
+def profilePracticante():
 
     id = get_jwt_identity()
     practicante = Practicante.query.get(id)

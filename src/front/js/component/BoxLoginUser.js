@@ -18,7 +18,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (dataLogin) => {
-    const resp = await fetch(`https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/Login`, { 
+    const resp = await fetch(`https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/LoginPracticante`, { 
          method: "POST",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify(dataLogin) 
@@ -35,7 +35,7 @@ const Login = () => {
     const data = await resp.json()
     // save your token in the localStorage
    //also you should set your user into the store using the setStore function
-    localStorage.setItem("jwt-token", data.acces_token);
+    sessionStorage.setItem("jwt-token", data.acces_token);
 
     return data
 }
@@ -136,11 +136,12 @@ const Login = () => {
             Recuerdame
           </label>
         </div>
-        <input
+        <button
           type="submit"
-          value="Iniciar sesión"
           className="bg-primary text-white border-0"
-        ></input>
+        >
+          sdfsdf
+          </button>
       </form>
     </div>
   );

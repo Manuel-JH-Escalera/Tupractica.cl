@@ -7,12 +7,14 @@ import AddressData from "../component/AddressData";
 import ContacInformation from "../component/ContactInformation";
 import Anexos from "../component/anexos";
 import Bio from "../component/Bio";
+import ModalUser from "../component/ModalUser";
+import EditButton from "../component/EditButton";
 
 export const UserProfile = () => {
   const [info, setInfo] = useState([]);
-  const token = localStorage.getItem("jwt-token");
+  const token = sessionStorage.getItem("jwt-token");
 
-  const initialUrl = "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/Profile";
+  const initialUrl = "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/ProfilePracticante";
 
 /*   const fetchCharacters = () => {
     fetch("https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/Profile", ,
@@ -27,7 +29,7 @@ export const UserProfile = () => {
   }; */
 
   function prueba() {
-    fetch("https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/Profile",
+    fetch("https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/ProfilePractiante",
     {
       method: 'GET', // or 'PUT'
       headers: {
@@ -46,6 +48,7 @@ export const UserProfile = () => {
 
   return (
     <div className="container ">
+      <EditButton/>
       <ProfilePhoto />
       <Bio info={info}/>
       <ProfileDataPerson info={info}/>
@@ -54,6 +57,7 @@ export const UserProfile = () => {
       <Anexos />
       <h1></h1>
       <button >prueba</button>
+      <ModalUser info={info}/>
     </div>
   );
 };

@@ -16,6 +16,8 @@ export const Navbar2 = () => {
   
   const LogOut = () => {
     sessionStorage.removeItem("jwt-token")
+    console.log("login out")
+    
   }
   
   return (
@@ -78,7 +80,7 @@ export const Navbar2 = () => {
           <button type="button" className="btn btn-primary">
             <Link to="/AccesoEmpresa" style={stylesb}>Acceso Empresa</Link>
           </button>
-          <button type="button" className="btn btn-primary" onClick={() => {LogOut}}>Log Out
+          <button type="button" className="btn btn-primary" onClick={LogOut}><Link to="/" style={stylesb}>Cerrar Sesión</Link>
           </button>
         </div>
       </div>
