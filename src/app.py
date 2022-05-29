@@ -36,7 +36,7 @@ def register_user():
     practicante.nombre = nombre
     practicante.apellido = apellido
     practicante.email = email
-    practicante.password = password
+    practicante.password = generate_password_hash(password)
     practicante.fecha_nacimiento = fecha_nacimiento
     practicante.comuna_id = comuna_id
 
@@ -54,7 +54,7 @@ def register_empresa():
     empresa = Empresa()
     empresa.razon_social = razon_social
     empresa.email = email
-    empresa.password = password
+    empresa.password = generate_password_hash(password)
     empresa.telefono = telefono
    
     empresa.save()
@@ -404,6 +404,7 @@ def login():
     practicante = Practicante.query.filter_by(email=username).first()
 
     if not practicante: return jsonify({"status": "fail", "message": "username/password incorrect" }), 401
+    if not check_password_hash(practicante.password, password): return jsonify({"status": "fail", "message": "username/password incorrect"})
 
     expires = datetime.timedelta(minutes=10)
     acces_token = create_access_token(identity=practicante.id, expires_delta=expires)

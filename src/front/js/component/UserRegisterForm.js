@@ -9,7 +9,7 @@ const UserRegisterForm = () => {
   const [characters, setCharacters] = useState([]);
 
   const initialUrl =
-    "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/comuna";
+    "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/comuna";
 
   const fetchCharacters = (initialUrl) => {
     fetch(initialUrl)
@@ -30,7 +30,7 @@ const UserRegisterForm = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/api/user-register",
+      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/api/user-register",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
