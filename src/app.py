@@ -406,7 +406,7 @@ def login():
     if not practicante: return jsonify({"status": "fail", "message": "username/password incorrect" }), 401
     if not check_password_hash(practicante.password, password): return jsonify({"status": "fail", "message": "username/password incorrect"})
 
-    expires = datetime.timedelta(minutes=10)
+    expires = datetime.timedelta(minutes=60)
     acces_token = create_access_token(identity=practicante.id, expires_delta=expires)
 
     data = {
