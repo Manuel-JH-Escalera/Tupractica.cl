@@ -1,5 +1,5 @@
 import React from "react";
-function ContacInformation() {
+function ContacInformation({info=[]}) {
   return (
     <div className="container">
       <div className="row pt-5">
@@ -10,14 +10,14 @@ function ContacInformation() {
           <label>Correo electronico:</label>
         </div>
         <div className="col-9">
-          tiendaonlineglamourybelleza@gmail.com
+          {info.email}
         </div>
       </div>
       <div className="row">
         <div className="col-3">
           <label>Teléfono:</label>
         </div>
-        <div className="col-9">egege</div>
+        <div className="col-9">{info.nombre}</div>
       </div>
     </div>
   );

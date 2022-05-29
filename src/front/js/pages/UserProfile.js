@@ -49,8 +49,8 @@ export const UserProfile = () => {
       <ProfilePhoto />
       <Bio info={info}/>
       <ProfileDataPerson info={info}/>
-      <AddressData />
-      <ContacInformation />
+      <AddressData info={info}/>
+      <ContacInformation info={info}/>
       <Anexos />
       <h1></h1>
       <button >prueba</button>
