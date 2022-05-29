@@ -142,6 +142,14 @@ def showPracticante_id():
 
     return jsonify(practicante)
 
+@app.route('/comuna-id', methods=['GET'])
+def showComuna_id():
+    comuna_id = request.json.get("comuna_id")
+    comuna = Comuna.query.filter_by(id = comuna_id)
+    comuna = list(map(lambda x: x.serialize(), comuna))
+
+    return jsonify(comuna)
+
 @app.route('/empresa', methods=['GET'])
 def showEmpresa():
     allEmpresa = Empresa.query.all()
