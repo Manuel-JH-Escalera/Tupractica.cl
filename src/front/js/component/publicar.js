@@ -86,8 +86,43 @@ const Publicar = () => {
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-6">
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="form-group m-0">
+                  <label for="descripcion" className="control-label">
+                    Descripción del puesto
+                  </label>
+                  <span className="input-group">
+                    <textarea
+                      type="text"
+                      className="form-control"
+                      placeholder=" Descripción del puesto"
+                      aria-label="titulo"
+                      id="titulo"
+                      {...register("descripcion", {
+                        required: true,
+                      })}
+                    />
+                    {errors.descripcion?.type === "required" && (
+                      <span
+                        className="input-group-text bg-white border-start-0"
+                        id="basic-addon1"
+                      >
+                        <AiFillCloseCircle className="fs-4 text-danger" />
+                      </span>
+                    )}
+                  </span>
+                  {errors.descripcion?.type === "required" && (
+                    <p className="text-danger">
+                      {" "}
+                      Ingresa la Descripción del aviso{" "}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-sm-6">
                 <div className="form-group">
                   <label for="area" className="control-label">
                     Carrera:
@@ -120,8 +155,8 @@ const Publicar = () => {
                 </div>
               </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
+              <div className="col-sm-6">
+                <div className="form-group">
                   <div className="form-group">
                     <label for="area" className="control-label">
                       Area:
@@ -155,12 +190,12 @@ const Publicar = () => {
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-6">
+            <div className="row">
+              <div className="col-sm-6">
                 <label for="date" className="form-label">
                   <b>Fecha de Inicio</b>
                 </label>
-                <span class="input-group">
+                <span className="input-group">
                   <input
                     type="date"
                     className="form-control"
@@ -185,13 +220,13 @@ const Publicar = () => {
                 )}
               </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
+              <div className="col-sm-6">
+                <div className="form-group">
                   <div className="form-group">
                     <label for="date" className="form-label">
                       <b>Fecha de Termino</b>
                     </label>
-                    <span class="input-group">
+                    <span className="input-group">
                       <input
                         type="date"
                         className="form-control"
@@ -219,15 +254,15 @@ const Publicar = () => {
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-sm-6">
+            <div className="row">
+              <div className="col-sm-6">
                 <div className="form-group">
                   <label for="comuna" className="form-label">
                     <b>Comuna</b>
                   </label>
                   <span className="input-group">
                     <select
-                      class="form-select"
+                      className="form-select"
                       aria-label="Default select example"
                       placeholder="Selecciona tu comuna"
                       {...register("comuna_id", { required: true })}
@@ -253,8 +288,8 @@ const Publicar = () => {
                 </div>
               </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
+              <div className="col-sm-6">
+                <div className="form-group">
                   <div className="form-group">
                     <label for="area" className="control-label">
                       Empresa:
