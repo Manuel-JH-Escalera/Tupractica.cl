@@ -11,15 +11,12 @@ const stylesb = {
   color: "white",
 };
 
-
 export const Navbar2 = () => {
-  
   const LogOut = () => {
-    sessionStorage.removeItem("jwt-token")
-    console.log("login out")
-    
-  }
-  
+    sessionStorage.removeItem("jwt-token");
+    console.log("login out");
+  };
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-light rounded"
@@ -41,9 +38,11 @@ export const Navbar2 = () => {
           <Link to="/" style={styles}>
             {" "}
             <img
-              src="https://4geeksacademy.slack.com/files/U02JD4C8ATA/F03H7D4PYA2/renovando.png"
-              className="card-img-top"
-              alt="..."
+              src="https://ibb.co/yRkLvCn"
+              alt=""
+              width={40}
+              height={24}
+              className="d-inline-block align-text-top"
             />
           </Link>
         </span>
@@ -99,7 +98,10 @@ export const Navbar2 = () => {
               Acceso Empresa
             </Link>
           </button>
-          <button type="button" className="btn btn-primary" onClick={LogOut}><Link to="/" style={stylesb}>Cerrar Sesión</Link>
+          <button type="button" className="btn btn-primary" onClick={LogOut}>
+            <Link to="/" style={stylesb}>
+              Cerrar Sesión
+            </Link>
           </button>
         </div>
       </div>
