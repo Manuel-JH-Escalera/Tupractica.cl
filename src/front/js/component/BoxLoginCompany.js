@@ -34,42 +34,12 @@ const Login = () => {
       })
       .catch((error) => console.error("Error:", error));
 
-<<<<<<< HEAD
-    const {
-        register,
-        formState: { errors },
-        handleSubmit,
-      } = useForm();
-    
-      const onSubmit = async (dataLogin) => {
-        const resp = await fetch(`https://5000-crisepu-proyectofinal-7o3hbk43100.ws-us46.gitpod.io/LoginEmpresa`, { 
-             method: "POST",
-             headers: { "Content-Type": "application/json" },
-             body: JSON.stringify(dataLogin) 
-        })
-    
-        if(!resp.ok) throw Error("There was a problem in the login request")
-    
-        if(resp.status === 401){
-             throw("Invalid credentials")
-        }
-        else if(resp.status === 400){
-             throw ("Invalid email or password format")
-        }
-        const data = await resp.json()
-        // save your token in the localStorage
-       //also you should set your user into the store using the setStore function
-        sessionStorage.setItem("jwt-token", data.acces_token);
-    
-        return data
-=======
     if (!resp.ok) throw Error("There was a problem in the login request");
 
     if (resp.status === 401) {
       throw "Invalid credentials";
     } else if (resp.status === 400) {
       throw "Invalid email or password format";
->>>>>>> b0a540ae69b979cfd0d3cf0cd4549c6d32201b62
     }
     const data = await resp.json();
     // save your token in the localStorage
