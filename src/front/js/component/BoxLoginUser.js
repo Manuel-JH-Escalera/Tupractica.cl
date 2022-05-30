@@ -10,7 +10,6 @@ const stylesb = {
 };
 
 const Login = () => {
-
   const {
     register,
     formState: { errors },
@@ -18,27 +17,35 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (dataLogin) => {
-    const resp = await fetch(`https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/LoginPracticante`, { 
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify(dataLogin) 
-    })
+    const resp = await fetch(
+      `https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/LoginPracticante`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataLogin),
+      }
+    )
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("Success:", response);
+        Swal.fire("Inicio de Sesión Exitoso");
+        sessionStorage.setItem("jwt-token", response.acces_token);
+      })
+      .catch((error) => console.error("Error:", error));
 
-    if(!resp.ok) throw Error("There was a problem in the login request")
+    if (!resp.ok) throw Error("There was a problem in the login request");
 
-    if(resp.status === 401){
-         throw("Invalid credentials")
+    if (resp.status === 401) {
+      throw "Invalid credentials";
+    } else if (resp.status === 400) {
+      throw "Invalid email or password format";
     }
-    else if(resp.status === 400){
-         throw ("Invalid email or password format")
-    }
-    const data = await resp.json()
+    const data = await resp.json();
     // save your token in the localStorage
-   //also you should set your user into the store using the setStore function
-    sessionStorage.setItem("jwt-token", data.acces_token);
+    //also you should set your user into the store using the setStore function
 
-    return data
-}
+    return data;
+  };
   /* const onSubmit = (data) => {
     fetch(
       "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/Login",
@@ -136,12 +143,9 @@ const Login = () => {
             Recuerdame
           </label>
         </div>
-        <button
-          type="submit"
-          className="bg-primary text-white border-0"
-        >
-          sdfsdf
-          </button>
+        <button type="submit" className="bg-primary text-white border-0">
+          Registro
+        </button>
       </form>
     </div>
   );

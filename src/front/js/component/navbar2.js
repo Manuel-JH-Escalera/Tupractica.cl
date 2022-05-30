@@ -2,24 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const styles = {
-  textDecoration: 'none',
-  color: "black"
+  textDecoration: "none",
+  color: "black",
 };
 
 const stylesb = {
-  textDecoration: 'none',
-  color: "white"
+  textDecoration: "none",
+  color: "white",
 };
 
-
 export const Navbar2 = () => {
-  
   const LogOut = () => {
-    sessionStorage.removeItem("jwt-token")
-    console.log("login out")
-    
-  }
-  
+    sessionStorage.removeItem("jwt-token");
+    console.log("login out");
+  };
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-light rounded"
@@ -37,7 +34,18 @@ export const Navbar2 = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <span className="navbar-brand"><Link to="/" style={styles}>Logo/Inicio</Link></span>
+        <span className="navbar-brand">
+          <Link to="/" style={styles}>
+            {" "}
+            <img
+              src="https://ibb.co/yRkLvCn"
+              alt=""
+              width={40}
+              height={24}
+              className="d-inline-block align-text-top"
+            />
+          </Link>
+        </span>
         <div
           className="collapse navbar-collapse justify-content-md-start"
           id="navbarsExample08"
@@ -45,7 +53,9 @@ export const Navbar2 = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <span className="nav-link" aria-current="page" href="#">
-                <Link to="/Buscador" style={styles}>Busca tu Practica</Link>
+                <Link to="/Buscador" style={styles}>
+                  Busca tu Practica
+                </Link>
               </span>
             </li>
             <li className="nav-item dropdown">
@@ -61,12 +71,16 @@ export const Navbar2 = () => {
               <ul className="dropdown-menu" aria-labelledby="dropdown08">
                 <li>
                   <span className="dropdown-item" href="#">
-                    <Link to="/RegistroAlumno" style={styles}>Registro para Alumnos</Link>
+                    <Link to="/RegistroAlumno" style={styles}>
+                      Registro para Alumnos
+                    </Link>
                   </span>
                 </li>
                 <li>
                   <span className="dropdown-item" href="#">
-                    <Link to="/RegistroEmpresa" style={styles}>Registro para Empresas</Link>
+                    <Link to="/RegistroEmpresa" style={styles}>
+                      Registro para Empresas
+                    </Link>
                   </span>
                 </li>
               </ul>
@@ -75,12 +89,19 @@ export const Navbar2 = () => {
         </div>
         <div className=" text-end">
           <button type="button" className="btn btn-primary me-2">
-            <Link to="/AccesoAlumno" style={stylesb}>Acceso Alumno</Link>
+            <Link to="/AccesoAlumno" style={stylesb}>
+              Acceso Alumno
+            </Link>
           </button>
           <button type="button" className="btn btn-primary">
-            <Link to="/AccesoEmpresa" style={stylesb}>Acceso Empresa</Link>
+            <Link to="/AccesoEmpresa" style={stylesb}>
+              Acceso Empresa
+            </Link>
           </button>
-          <button type="button" className="btn btn-primary" onClick={LogOut}><Link to="/" style={stylesb}>Cerrar Sesión</Link>
+          <button type="button" className="btn btn-primary" onClick={LogOut}>
+            <Link to="/" style={stylesb}>
+              Cerrar Sesión
+            </Link>
           </button>
         </div>
       </div>
