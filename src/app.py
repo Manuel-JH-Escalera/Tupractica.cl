@@ -457,5 +457,15 @@ def profilePracticante():
 
     return jsonify(practicante.serialize()), 200
 
+#Profile
+@app.route('/ProfileEmpresa', methods=['GET'])
+@jwt_required()
+def profileEmpresa():
+
+    id = get_jwt_identity()
+    empresa = Empresa.query.get(id)
+
+    return jsonify(empresa.serialize()), 200
+
 if __name__ == '__main__':
     app.run()
