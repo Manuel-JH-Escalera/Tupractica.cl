@@ -28,10 +28,10 @@ function FrontPage() {
       <div className="container">
         <div className="row pt-5">
           <h1>Ingenieria</h1>
-          <div className="col-ms-12 col-md-6 col-lg-3 g-4">
+          <div className="">
             <Card
               characters={characters}
-              image={"https://picsum.photos/seed/100/500/325/"}
+              img={"https://picsum.photos/seed/100/500/325/"}
             />
           </div>
         </div>
