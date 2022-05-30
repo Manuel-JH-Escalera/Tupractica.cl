@@ -5,6 +5,28 @@ import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import Swal from "sweetalert2";
 
 const Publicar = () => {
+  const [infoProfile, setInfoProfile] = useState([]);
+  const token = sessionStorage.getItem("jwt-token");
+  function prueba() {
+    fetch(
+      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/ProfileEmpresa",
+      {
+        method: "GET", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => setInfoProfile(data))
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(() => {
+    prueba();
+  }, []);
+
   const [characters, setCharacters] = useState([]);
 
   const initialUrl =
@@ -29,7 +51,7 @@ const Publicar = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/create-oferta",
+      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/create-oferta",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
@@ -292,7 +314,6 @@ const Publicar = () => {
                 <div className="form-group">
                   <div className="form-group">
                     <label for="area" className="control-label">
-                      Empresa:
                     </label>
 
                     <span className="input-group">
@@ -303,6 +324,8 @@ const Publicar = () => {
                         placeholder=" empresa"
                         aria-label=" empresa"
                         id=" empresa"
+                        value={infoProfile.id}
+                        
                         {...register("empresa_id", {
                           required: true,
                         })}

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 export const Vehicles = props => {
 	const [characters, setCharacters] = useState([]);
 
-	const initialUrl = "https://5000-attackamabw-proyectofin-8mwxjo5p5q8.ws-us45.gitpod.io/oferta"
+	const initialUrl = "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/oferta"
 
 	const fetchCharacters = (initialUrl) =>{
 		fetch (initialUrl)

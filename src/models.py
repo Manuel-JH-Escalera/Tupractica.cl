@@ -122,7 +122,7 @@ class Oferta(db.Model):
     
     def serialize(self):
         comuna = Comuna.query.get(self.comuna_id)
-        empresa = Empresa.quey.get(self.empresa_id)
+        empresa = Empresa.query.get(self.empresa_id)
         return {
             "id": self.id,
             "titulo": self.titulo,
