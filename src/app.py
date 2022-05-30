@@ -467,5 +467,32 @@ def profileEmpresa():
 
     return jsonify(empresa.serialize()), 200
 
+@app.route('/api/filter', methods=['GET'])
+def showFilter():
+    area = request.json.get("area")
+    carrera_requerida = request.json.get("carrera_requerida")
+    comuna_id = request.json.get("comuna_id") #id comuna
+
+    if (area != "" and carrera_requerida != "" and comuna_id != ""):
+        ofertaFilter = Oferta.query.filter_by(area=area, carrera_requerida=carrera_requerida, comuna_id=comuna_id)
+    elif(area != "" and carrera_requerida != "" and comuna_id == ""):
+        ofertaFilter = Oferta.query.filter_by(area=area, carrera_requerida=carrera_requerida)
+    elif(area != "" and carrera_requerida == "" and comuna_id != ""):
+        ofertaFilter = Oferta.query.filter_by(area=area, comuna_id=comuna_id)
+    elif (area == "" and carrera_requerida != "" and comuna_id != ""):
+        ofertaFilter = Oferta.query.filter_by(carrera_requerida=carrera_requerida, comuna_id=comuna_id)
+    elif (area != "" and carrera_requerida == "" and comuna_id == ""):
+        ofertaFilter = Oferta.query.filter_by(area=area)
+    elif (area == "" and carrera_requerida == "" and comuna_id != ""):
+        ofertaFilter = Oferta.query.filter_by(comuna_id=comuna_id)
+    elif (area == "" and carrera_requerida != "" and comuna_id == ""):
+        ofertaFilter = Oferta.query.filter_by(carrera_requerida=carrera_requerida)
+    else:
+        ofertaFilter = Oferta.query.all()
+
+    ofertaFilter = list(map(lambda x: x.serialize(), ofertaFilter))
+
+    return jsonify(ofertaFilter), 200
+
 if __name__ == '__main__':
     app.run()
