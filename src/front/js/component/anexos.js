@@ -1,6 +1,6 @@
 import React from "react";
 
-function Anexos() {
+function Anexos(info=[]) {
   return (
     <div className="container">
       <div className="row justify-content-start pt-5">
@@ -11,14 +11,7 @@ function Anexos() {
           <label>Anexo 1:</label>
         </div>
         <div className="col-9">
-          {" "}
-          <input
-            type="file"
-            className="SUBIR DOCUMENTO"
-            id="inputGroupFile04"
-            aria-describedby="inputGroupFileAddon04"
-            aria-label="Upload"
-          />
+          {info.anexo1}
         </div>
       </div>
       <div className="row">
@@ -26,14 +19,7 @@ function Anexos() {
           <label>Anexo 2:</label>
         </div>
         <div className="col-9">
-          {" "}
-          <input
-            type="file"
-            className="SUBIR DOCUMENTO"
-            id="inputGroupFile04"
-            aria-describedby="inputGroupFileAddon04"
-            aria-label="Upload"
-          />
+          {info.anexo2}
         </div>
       </div>
     </div>

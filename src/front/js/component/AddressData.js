@@ -6,10 +6,6 @@ function AddressData({info=[]}) {
         <h2 className="pb-2 border-bottom">Datos de domicilio</h2>
       </div>
       <div className="row">
-        <div className="col-3">
-          <label>Región:</label>
-        </div>
-        <div className="col-9">2e2</div>
       </div>
       <div className="row">
         <div className="col-3">

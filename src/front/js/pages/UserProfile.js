@@ -54,9 +54,7 @@ export const UserProfile = () => {
       <ProfileDataPerson info={info}/>
       <AddressData info={info}/>
       <ContacInformation info={info}/>
-      <Anexos />
-      <h1></h1>
-      <button >prueba</button>
+      <Anexos info={info}/>
       <ModalUser info={info}/>
     </div>
   );
