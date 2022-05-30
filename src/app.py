@@ -280,7 +280,7 @@ def delete_admin(id):
     return jsonify(data)
 
 @app.route('/api/user-register/edit', methods=['PUT'])
-def update_user(id):
+def update_user():
     nombre = request.json.get("nombre")
     if not nombre: return jsonify({"msg": "Nombre es requerido"}), 400
     apellido = request.json.get("apellido")

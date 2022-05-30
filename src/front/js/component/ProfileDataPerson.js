@@ -22,22 +22,6 @@ function ProfileDataPerson({info=[]}) {
         </div>
         <div className="row">
           <div className="col-3">
-            <label>Rut:</label>
-          </div>
-          <div className="col-9">
-            <label>25.691.071-3</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-3">
-            <label>Nacionalidad:</label>
-          </div>
-          <div className="col-9">
-            <label>Dominicana</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-3">
             <label>Fecha de Nacimiento:</label>
           </div>
           <div className="col-9">
@@ -49,7 +33,7 @@ function ProfileDataPerson({info=[]}) {
             <label>Nombre de la Instituccion:</label>
           </div>
           <div className="col-9">
-            <label>DUOC UC</label>
+            <label>{info.institucion}</label>
           </div>
         </div>
         <div className="row">
