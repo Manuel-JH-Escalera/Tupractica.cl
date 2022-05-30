@@ -1,5 +1,5 @@
 import React from "react";
-function CompanyData() {
+function CompanyData({info=[]}) {
   return (
     <div className="container">
       <h2 className="pb-3 border-bottom">Datos Empresa</h2>
@@ -8,7 +8,7 @@ function CompanyData() {
             <label>Razon Social:</label>
           </div>
           <div className="col-9">
-            <label>anyelina cocina</label>
+            <label>{info.razon_social}</label>
           </div>
         </div>
         <div className="row">

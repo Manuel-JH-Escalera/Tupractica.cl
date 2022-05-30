@@ -47,6 +47,7 @@ class Practicante(db.Model):
     postulacion = db.relationship('Postulacion', backref="practicante")
         
     def serialize(self):
+        comuna = Comuna.query.get(self.comuna_id)
         return {
             "id": self.id,
             "nombre": self.nombre,
@@ -60,7 +61,7 @@ class Practicante(db.Model):
             "telefono": self.telefono,
             "anexo1": self.anexo1,
             "anexo2": self.anexo2,
-            "comuna_id": self.comuna_id
+            "comuna": comuna.serialize()
         }
     
     def save(self):
@@ -120,6 +121,8 @@ class Oferta(db.Model):
     postulacion = db.relationship('Postulacion', backref="oferta")
     
     def serialize(self):
+        comuna = Comuna.query.get(self.comuna_id)
+        empresa = Empresa.quey.get(self.empresa_id)
         return {
             "id": self.id,
             "titulo": self.titulo,
@@ -128,8 +131,8 @@ class Oferta(db.Model):
             "carrera_requerida": self.carrera_requerida,
             "fecha_inicio": self.fecha_inicio,
             "fecha_termino": self.fecha_termino,
-            "comuna_id": self.comuna_id,
-            "empresa_id": self.empresa_id
+            "comuna": comuna.serialize(),
+            "empresa": empresa.serialize()
         }
     
     def save(self):
@@ -151,11 +154,13 @@ class Postulacion(db.Model):
     oferta_id= db.Column(db.Integer, db.ForeignKey('oferta.id'))
   
     def serialize(self):
+        practicante = Practicante.query.get(self.practicante_id)
+        oferta = Oferta.query.get(self.oferta_id)
         return {
             "id": self.id,
             "fecha_postulacion": self.fecha_postulacion,
-            "practicante_id": self.practicante_id,
-            "oferta_id": self.oferta_id
+            "practicante": practicante.serialize(),
+            "oferta": oferta.serialize()
         }
     
     def save(self):

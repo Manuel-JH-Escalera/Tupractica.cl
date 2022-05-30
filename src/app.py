@@ -280,7 +280,7 @@ def delete_admin(id):
     return jsonify(data)
 
 @app.route('/api/user-register/edit', methods=['PUT'])
-def update_user(id):
+def update_user():
     nombre = request.json.get("nombre")
     if not nombre: return jsonify({"msg": "Nombre es requerido"}), 400
     apellido = request.json.get("apellido")
@@ -456,6 +456,16 @@ def profilePracticante():
     practicante = Practicante.query.get(id)
 
     return jsonify(practicante.serialize()), 200
+
+#Profile
+@app.route('/ProfileEmpresa', methods=['GET'])
+@jwt_required()
+def profileEmpresa():
+
+    id = get_jwt_identity()
+    empresa = Empresa.query.get(id)
+
+    return jsonify(empresa.serialize()), 200
 
 if __name__ == '__main__':
     app.run()

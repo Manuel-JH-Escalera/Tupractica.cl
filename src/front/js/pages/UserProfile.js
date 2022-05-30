@@ -53,14 +53,12 @@ export const UserProfile = () => {
     <div className="container ">
       <EditButton />
       <ProfilePhoto />
-      <Bio info={info} />
-      <ProfileDataPerson info={info} />
-      <AddressData info={info} />
-      <ContacInformation info={info} />
-      <Anexos />
-      <h1></h1>
-      <button>prueba</button>
-      <ModalUser info={info} />
+      <Bio info={info}/>
+      <ProfileDataPerson info={info}/>
+      <AddressData info={info}/>
+      <ContacInformation info={info}/>
+      <Anexos info={info}/>
+      <ModalUser info={info}/>
     </div>
   );
 };
