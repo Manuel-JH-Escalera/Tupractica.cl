@@ -1,91 +1,23 @@
-import React from "react";
+import PropTypes from "prop-types";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useParams } from "react-router-dom";
 
-export const Card = () => {
+export const Card = ({ character = [] }) => {
   return (
-    <div className="container mt-5">
-      <h2>Ejemplo:</h2>
-      <div className="row">
-        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
-          <div className="card">
-            <img
-              src="https://picsum.photos/seed/100/500/325/"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
-          <div className="card">
-            <img
-              src="https://picsum.photos/seed/100/500/325/"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
-          <div className="card">
-            <img
-              src="https://picsum.photos/seed/100/500/325/"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-3 g-4">
-          <div className="card">
-            <img
-              src="https://picsum.photos/seed/100/500/325/"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
+    <div className="card mb-3">
+      <img className="card-img-top" />
+      <div className="card-body">
+        <h5 className="card-title"></h5>
+        <p className="card-text"></p>
+        <a href="#" className="btn btn-primary"></a>
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  buttonTittle: PropTypes.string,
+  image: PropTypes.any,
 };
