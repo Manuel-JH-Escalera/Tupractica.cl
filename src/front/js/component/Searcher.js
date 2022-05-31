@@ -93,6 +93,7 @@ const Searcher = () => {
                   placeholder="Selecciona tu comuna"
                   {...register("comuna_id")}
                 >
+                    <option value="">-------</option>
                   {comunas.map((item, index) => (
                     <option key={index} value={item.id}>
                       {item.nombre}
