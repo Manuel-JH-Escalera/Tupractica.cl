@@ -63,7 +63,7 @@ export const Footer = () => (
       </div>
 
       <div className="col">
-        <h5>contacto</h5>
+        <h5>Contacto</h5>
         <ul className="nav flex-column">
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">

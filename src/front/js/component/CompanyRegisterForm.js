@@ -31,7 +31,7 @@ const CompanyRegisterForm = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/api/empresa-register",
+      "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/empresa-register",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
