@@ -15,6 +15,8 @@ const stylesb = {
 };
 
 export const Navbar2 = () => {
+
+  useEffect 
   sessionStorage.getItem("jwt-token");
 
   const [show, setShow] = useState(false);
@@ -90,7 +92,7 @@ export const Navbar2 = () => {
           </ul>
         </div>
         <div className=" text-end mt-3">
-          <Logins /><Logout />
+          {sessionStorage.getItem("jwt-token") != null ? <Logout />:<Logins />}
           <div></div>
         </div>
       </div>
