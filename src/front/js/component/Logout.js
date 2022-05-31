@@ -11,14 +11,15 @@ export const Logout = () => {
     const LogOut = () => {
         sessionStorage.removeItem("jwt-token");
         console.log("login out");
+        window.location = "/"
       };
     
   return (
     <>
-      <button type="button" className="btn btn-danger" onClick={LogOut}>
-        <Link to="/" style={stylesb}>
+      <button type="button" className="btn btn-danger" onClick={() =>LogOut()}>
+    
           Cerrar Sesión
-        </Link>
+ 
       </button>
     </>
   );
