@@ -467,7 +467,7 @@ def profileEmpresa():
 
     return jsonify(empresa.serialize()), 200
 
-@app.route('/api/filter', methods=['GET'])
+@app.route('/api/filter', methods=['POST'])
 def showFilter():
     area = request.json.get("area")
     carrera_requerida = request.json.get("carrera_requerida")

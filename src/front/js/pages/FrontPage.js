@@ -9,7 +9,7 @@ function FrontPage() {
   const [characters, setCharacters] = useState([]);
 
   const initialUrl =
-    "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/oferta";
+    "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/oferta";
 
   const fetchCharacters = (initialUrl) => {
     fetch(initialUrl)

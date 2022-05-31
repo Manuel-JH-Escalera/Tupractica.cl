@@ -1,9 +1,9 @@
 import React from "react";
-const FormatoInfo = ({characters=[], img, name, info}) => {
+const FormatoInfo = ({trabajos=[], img, name, info}) => {
     return (
     <div className="container">
         {
-            characters.map((item, index) => (
+            trabajos.map((item, index) => (
                 <li className="row bg-light border border-secondary p-2 mt-2" key={index}>
                     <div className="row">
                         <h4 className="col-9 pt-1">{item.titulo}</h4>
