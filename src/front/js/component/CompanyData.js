@@ -11,14 +11,7 @@ function CompanyData({info=[]}) {
             <label>{info.razon_social}</label>
           </div>
         </div>
-        <div className="row">
-          <div className="col-3">
-            <label>RUN:</label>
-          </div>
-          <div className="col-9">
-            <label>76-6666.666.-3</label>
-          </div>
-        </div>
+         
     </div>
   );
 }

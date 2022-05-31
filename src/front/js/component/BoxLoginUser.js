@@ -18,7 +18,7 @@ const Login = () => {
 
   const onSubmit = async (dataLogin) => {
     const resp = await fetch(
-      `https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/LoginPracticante`,
+      `https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/LoginPracticante`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
