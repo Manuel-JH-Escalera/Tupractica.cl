@@ -5,6 +5,7 @@ import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+
 const stylesb = {
   textDecoration: "none",
   color: "white",
@@ -19,7 +20,7 @@ const Login = () => {
 
   const onSubmit = async (dataLogin) => {
     const resp = await fetch(
-      `https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/LoginEmpresa`,
+      `https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/LoginEmpresa`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -29,7 +30,19 @@ const Login = () => {
       .then((res) => res.json())
       .then((response) => {
         console.log("Success:", response);
-        Swal.fire("Inicio de Sesión Exitoso");
+        Swal.fire({
+          title: 'Registro Exitoso',
+          text: "Bienvenido",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ok!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location = "/PerfilEmpresa"
+          }
+        })
         sessionStorage.setItem("jwt-token", response.acces_token);
       })
       .catch((error) => console.error("Error:", error));

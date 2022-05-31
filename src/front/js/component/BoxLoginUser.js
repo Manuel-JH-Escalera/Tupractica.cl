@@ -18,7 +18,7 @@ const Login = () => {
 
   const onSubmit = async (dataLogin) => {
     const resp = await fetch(
-      `https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/LoginPracticante`,
+      `https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/LoginPracticante`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,9 +28,26 @@ const Login = () => {
       .then((res) => res.json())
       .then((response) => {
         console.log("Success:", response);
-        Swal.fire("Inicio de Sesión Exitoso");
+        /* Swal.fire("Inicio de Sesión Exitoso"); */
+        Swal.fire({
+          title: 'Registro Exitoso',
+          text: "Bienvenido",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ok!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location = "/PerfilAlumno"
+          }
+        })
         sessionStorage.setItem("jwt-token", response.acces_token);
+        
       })
+      /* .then(function() {
+        window.location = "/PerfilAlumno";
+      }) */
       .catch((error) => console.error("Error:", error));
 
     if (!resp.ok) throw Error("There was a problem in the login request");

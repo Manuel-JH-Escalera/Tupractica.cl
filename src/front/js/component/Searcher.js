@@ -48,14 +48,15 @@ const Searcher = () => {
         setTrabajos(response);
       })
       .catch((error) => console.error("Error:", error));
-
+      
     console.log(data);
+
   };
 
   const [searchTerm, setSearchTerm] = useState("");
 
   function borrar(){
-    setTrabajos()
+    setComunas("")
   }
 
   return (
@@ -93,13 +94,12 @@ const Searcher = () => {
                   placeholder="Selecciona tu comuna"
                   {...register("comuna_id")}
                 >
-                    <option value="">-------</option>
+                  <option value="">Selecciona tu Comuna</option>
                   {comunas.map((item, index) => (
                     <option key={index} value={item.id}>
                       {item.nombre}
                     </option>
                   ))}
-                  <option value="" selected>Selecciona tu Comuna</option>
                 </select>
               </span>
               <button

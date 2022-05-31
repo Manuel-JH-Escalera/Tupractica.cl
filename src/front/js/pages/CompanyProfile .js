@@ -29,7 +29,7 @@ export const CompanyProfile = () => {
 
   function prueba() {
     fetch(
-      "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/ProfileEmpresa",
+      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/ProfileEmpresa",
       {
         method: "GET", // or 'PUT'
         headers: {

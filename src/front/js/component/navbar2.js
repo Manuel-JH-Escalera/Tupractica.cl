@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Logins } from "./Logins";
+import { Logout } from "./Logout";
 
 const styles = {
   textDecoration: "none",
@@ -12,10 +14,9 @@ const stylesb = {
 };
 
 export const Navbar2 = () => {
-  const LogOut = () => {
-    sessionStorage.removeItem("jwt-token");
-    console.log("login out");
-  };
+
+  
+  const [show, setShow] = useState(false);
 
   return (
     <nav
@@ -88,22 +89,8 @@ export const Navbar2 = () => {
           </ul>
         </div>
         <div className=" text-end mt-3">
-          <button type="button" className="btn btn-primary me-2">
-            <Link to="/AccesoAlumno" style={stylesb}>
-              Acceso Alumno
-            </Link>
-          </button>
-          <button type="button" className="btn btn-primary">
-            <Link to="/AccesoEmpresa" style={stylesb}>
-              Acceso Empresa
-            </Link>
-          </button>
-
-          <button type="button" className="btn btn-primary" onClick={LogOut}>
-            <Link to="/" style={stylesb}>
-              Cerrar Sesión
-            </Link>
-          </button>
+          {sessionStorage.getItem("jwt-token") ? <Logins show={setShow}/> : <Logins show={!setShow} />}
+          {!sessionStorage.getItem("jwt-token") ? <Logout show={!setShow}/> : <Logout show={setShow}/>}
         </div>
       </div>
     </nav>
