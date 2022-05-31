@@ -17,7 +17,7 @@ function ContacInformation({info=[]}) {
         <div className="col-3">
           <label>Teléfono:</label>
         </div>
-        <div className="col-9">{info.nombre}</div>
+        <div className="col-9">{info.telefono}</div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const Publicar = () => {
   const token = sessionStorage.getItem("jwt-token");
   function prueba() {
     fetch(
-      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/ProfileEmpresa",
+      "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/ProfileEmpresa",
       {
         method: "GET", // or 'PUT'
         headers: {
@@ -30,7 +30,7 @@ const Publicar = () => {
   const [characters, setCharacters] = useState([]);
 
   const initialUrl =
-    "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/comuna";
+    "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/comuna";
 
   const fetchCharacters = (initialUrl) => {
     fetch(initialUrl)
@@ -51,7 +51,7 @@ const Publicar = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/create-oferta",
+      "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/create-oferta",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
@@ -320,7 +320,7 @@ const Publicar = () => {
                       <input
                         type="text"
                         rows="6"
-                        className="form-control"
+                        className="form-control border-0 text-white"
                         placeholder=" empresa"
                         aria-label=" empresa"
                         id=" empresa"
