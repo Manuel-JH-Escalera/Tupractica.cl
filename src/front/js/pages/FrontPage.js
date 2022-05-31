@@ -4,12 +4,14 @@ import { Navbar } from "../component/Navbar";
 import { Card } from "../component/Card";
 import { Jumbotron } from "../component/jumbotron";
 import { UserProfile } from "./UserProfile";
+import { Carusel } from "../component/Carusel";
+import ModalOferta from "../component/ModalOferta";
 
 function FrontPage() {
   const [characters, setCharacters] = useState([]);
 
   const initialUrl =
-    "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/oferta";
+    "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/oferta";
 
   const fetchCharacters = (initialUrl) => {
     fetch(initialUrl)
@@ -27,15 +29,17 @@ function FrontPage() {
       <Jumbotron />
       <div className="container">
         <div className="row pt-5">
-          <h1>Ingenieria</h1>
           <div className="">
-            <Card
-              characters={characters}
-              img={"https://picsum.photos/seed/100/500/325/"}
-            />
+            <Card characters={characters} />
           </div>
         </div>
+
+        <h1>Empresa Asociada</h1>
+        <div className="container w-50">
+          <Carusel />
+        </div>
       </div>
+      <ModalOferta characters={characters} />
 
       {/* <Footer /> */}
     </>

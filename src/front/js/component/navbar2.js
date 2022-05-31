@@ -38,10 +38,10 @@ export const Navbar2 = () => {
           <Link to="/" style={styles}>
             {" "}
             <img
-              src="https://ibb.co/yRkLvCn"
-              alt=""
-              width={40}
-              height={24}
+              src="https://i.ibb.co/2gRKjF5/logo-renovado2.png"
+              alt="logo"
+              width={130}
+              height={40}
               className="d-inline-block align-text-top"
             />
           </Link>
@@ -87,7 +87,7 @@ export const Navbar2 = () => {
             </li>
           </ul>
         </div>
-        <div className=" text-end">
+        <div className=" text-end mt-3">
           <button type="button" className="btn btn-primary me-2">
             <Link to="/AccesoAlumno" style={stylesb}>
               Acceso Alumno
@@ -98,6 +98,7 @@ export const Navbar2 = () => {
               Acceso Empresa
             </Link>
           </button>
+
           <button type="button" className="btn btn-primary" onClick={LogOut}>
             <Link to="/" style={stylesb}>
               Cerrar Sesión

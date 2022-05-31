@@ -7,104 +7,75 @@ export const Footer = () => (
         <a
           href="/"
           className="d-flex align-items-center mb-3 link-dark text-decoration-none"
-        >
-          <svg className="bi me-2 " width="40" height="32">
-            hola
-          </svg>
-        </a>
-        <p className="text-muted text-center">&copy; 2022</p>
+        ></a>
+        <p className="text-muted text-center">
+          <img
+            src="https://i.ibb.co/vX2hFkf/renovando.png"
+            alt="logo"
+            width={170}
+            height={104}
+          ></img>
+        </p>
       </div>
 
       <div className="col"></div>
 
       <div className="col">
-        <h5>Section</h5>
+        <h5>Informacion Adicional</h5>
         <ul className="nav flex-column">
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">
-              Home
+              contacto
             </a>
           </li>
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">
-              Features
+              QuienesSomos
             </a>
           </li>
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">
-              Pricing
-            </a>
-          </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              FAQs
-            </a>
-          </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              About
+              Termino y condiciones
             </a>
           </li>
         </ul>
       </div>
 
       <div className="col">
-        <h5>Section</h5>
+        <h5>Categoria</h5>
         <ul className="nav flex-column">
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">
-              Home
+              Ingenieria
             </a>
           </li>
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">
-              Features
+              Medicina
             </a>
           </li>
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">
-              Pricing
-            </a>
-          </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              FAQs
-            </a>
-          </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              About
+              Educacion
             </a>
           </li>
         </ul>
       </div>
 
       <div className="col">
-        <h5>Section</h5>
+        <h5>contacto</h5>
         <ul className="nav flex-column">
           <li className="nav-item mb-2">
             <a href="#" className="nav-link p-0 text-muted">
-              Home
+              <a href="https://maps.google.com/?q=Pedro Aguirre Cerda 73, Buin">
+                <i className="fas fa-map-marker-alt"></i> Pedro Aguirre Cerda
+                73, Buin
+              </a>
             </a>
           </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              Features
-            </a>
-          </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              Pricing
-            </a>
-          </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              FAQs
-            </a>
-          </li>
-          <li className="nav-item mb-2">
-            <a href="#" className="nav-link p-0 text-muted">
-              About
+          <li className="nav-item mb-4">
+            <a>
+              <i className="fas fa-envelope"></i> tupractica@hotmail.com
             </a>
           </li>
         </ul>
