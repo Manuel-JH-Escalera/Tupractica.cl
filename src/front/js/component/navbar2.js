@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Logins } from "./Logins";
 import { Logout } from "./Logout";
+import { NavLog } from "./NavLog";
 
 const styles = {
   textDecoration: "none",
@@ -14,8 +15,8 @@ const stylesb = {
 };
 
 export const Navbar2 = () => {
+  sessionStorage.getItem("jwt-token");
 
-  
   const [show, setShow] = useState(false);
 
   return (
@@ -89,8 +90,8 @@ export const Navbar2 = () => {
           </ul>
         </div>
         <div className=" text-end mt-3">
-          {sessionStorage.getItem("jwt-token") ? <Logins show={setShow}/> : <Logins show={!setShow} />}
-          {!sessionStorage.getItem("jwt-token") ? <Logout show={!setShow}/> : <Logout show={setShow}/>}
+          <Logins /><Logout />
+          <div></div>
         </div>
       </div>
     </nav>
