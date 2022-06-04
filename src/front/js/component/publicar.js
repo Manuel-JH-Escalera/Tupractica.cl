@@ -9,7 +9,7 @@ const Publicar = () => {
   const token = sessionStorage.getItem("jwt-token");
   function prueba() {
     fetch(
-      "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/ProfileEmpresa",
+      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/ProfileEmpresa",
       {
         method: "GET", // or 'PUT'
         headers: {
@@ -30,7 +30,7 @@ const Publicar = () => {
   const [characters, setCharacters] = useState([]);
 
   const initialUrl =
-    "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/comuna";
+    "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/comuna";
 
   const fetchCharacters = (initialUrl) => {
     fetch(initialUrl)
@@ -51,7 +51,7 @@ const Publicar = () => {
 
   const onSubmit = (data) => {
     fetch(
-      "https://5000-crisepu-proyectofinal-s0lbghx4d95.ws-us46.gitpod.io/create-oferta",
+      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/create-oferta",
       {
         method: "POST", // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
@@ -80,7 +80,7 @@ const Publicar = () => {
               <div className="col-sm-12 mt-3">
                 <div className="form-group">
                   <label for="title" className="control-label">
-                    Título :
+                    <b>Título:</b>
                   </label>
                   <span className="input-group">
                     <input
@@ -112,7 +112,7 @@ const Publicar = () => {
               <div className="col-sm-12">
                 <div className="form-group m-0">
                   <label for="descripcion" className="control-label">
-                    Descripción del puesto
+                    <b>Descripción del puesto:</b>
                   </label>
                   <span className="input-group">
                     <textarea
@@ -147,7 +147,7 @@ const Publicar = () => {
               <div className="col-sm-6">
                 <div className="form-group">
                   <label for="area" className="control-label">
-                    Carrera:
+                  <b>Carrera:</b>
                   </label>
 
                   <span className="input-group">
@@ -181,7 +181,7 @@ const Publicar = () => {
                 <div className="form-group">
                   <div className="form-group">
                     <label for="area" className="control-label">
-                      Area:
+                      <b>Area:</b>
                     </label>
 
                     <span className="input-group">
@@ -321,7 +321,6 @@ const Publicar = () => {
                         type="text"
                         rows="6"
                         className="form-control border-0 text-white"
-                        placeholder=" empresa"
                         aria-label=" empresa"
                         id=" empresa"
                         value={infoProfile.id}
@@ -330,18 +329,7 @@ const Publicar = () => {
                           required: true,
                         })}
                       />
-                      {errors.empresa_id?.type === "required" && (
-                        <span
-                          className="input-group-text bg-white border-start-0"
-                          id="basic-addon1"
-                        >
-                          <AiFillCloseCircle className="fs-4 text-danger" />
-                        </span>
-                      )}
                     </span>
-                    {errors.empresa_id?.type === "required" && (
-                      <p className="text-danger"> Ingresa Empresa </p>
-                    )}
                   </div>
                 </div>
               </div>

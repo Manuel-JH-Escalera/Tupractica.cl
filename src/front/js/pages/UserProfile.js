@@ -9,6 +9,7 @@ import Anexos from "../component/anexos";
 import Bio from "../component/Bio";
 import ModalUser from "../component/ModalUser";
 import EditButton from "../component/EditButton";
+import { BiEdit } from "react-icons/bi";
 
 export const UserProfile = () => {
   const [info, setInfo] = useState([]);
@@ -31,7 +32,7 @@ export const UserProfile = () => {
 
   function prueba() {
     fetch(
-      "https://5000-anyelinapar-proyectofin-t87xjlc6kxy.ws-us46.gitpod.io/ProfilePractiante",
+      "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/ProfilePractiante",
       {
         method: "GET", // or 'PUT'
         headers: {
@@ -51,7 +52,14 @@ export const UserProfile = () => {
 
   return (
     <div className="container ">
-      <EditButton />
+      <button
+      type="button"
+      className="btn btn-info p-1 m-1"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Editar Perfil<BiEdit className="fs-4" />
+    </button>
       <ProfilePhoto />
       <Bio info={info}/>
       <ProfileDataPerson info={info}/>

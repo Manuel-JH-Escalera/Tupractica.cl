@@ -2,25 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BiSearchAlt } from "react-icons/bi";
 import FormatoInfo from "./FormatoInfo";
+import ModalOferta from "./ModalOferta";
 import JSONDATA from "../../DataPruebas/MOCK_DATA.json";
 
-const Searcher = () => {
+const Searcher = ({comunas=[], info=[]}) => {
   const [trabajos, setTrabajos] = useState([]);
-  const [comunas, setComunas] = useState([]);
-
-  const initialUrl =
-    "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/comuna";
-
-  const fetchComunas = (initialUrl) => {
-    fetch(initialUrl)
-      .then((response) => response.json())
-      .then((data) => setComunas(data))
-      .catch((error) => console.log(error));
-  };
-
-  useEffect(() => {
-    fetchComunas(initialUrl);
-  }, []);
 
   const {
     register,
@@ -28,9 +14,6 @@ const Searcher = () => {
     handleSubmit,
   } = useForm();
 
-  function borrar(){
-    setTrabajos([])
-  }
   const onSubmit = (data) => {
     fetch(
       "https://5000-4geeksacade-reactflaskh-dii2hv6x3jn.ws-us46.gitpod.io/api/filter",
@@ -54,10 +37,6 @@ const Searcher = () => {
   };
 
   const [searchTerm, setSearchTerm] = useState("");
-
-  function borrar(){
-    setComunas("")
-  }
 
   return (
     <>
@@ -102,16 +81,11 @@ const Searcher = () => {
                   ))}
                 </select>
               </span>
-              <button
-                className="btn btn-outline-secondary"
-                type="reset"
-                id="button-addon1"
-              ><BiSearchAlt className="fs-4" /></button>
             </div>
           </div>
         </form>
         <div className="container">
-          <FormatoInfo trabajos={trabajos}/>
+          <FormatoInfo trabajos={trabajos} info={info}/>
         </div>
       </div>
     </>

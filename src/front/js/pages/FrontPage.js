@@ -28,13 +28,14 @@ function FrontPage() {
       {/* <Navbar /> */}
       <Jumbotron />
       <div className="container">
+      <h2>Ultimas Ofertas:</h2>
         <div className="row pt-5">
           <div className="">
             <Card characters={characters} />
           </div>
         </div>
-
-        <h1>Empresa Asociada</h1>
+       
+        <h2>Empresas Asociadas:</h2>
         <div className="container w-50">
           <Carusel />
         </div>

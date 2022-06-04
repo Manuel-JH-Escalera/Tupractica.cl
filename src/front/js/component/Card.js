@@ -22,13 +22,11 @@ export const Card = ({ characters = [] }) => {
                 <h4 className="fst-italic fs-6">{item.comuna.nombre} </h4>
               </div>
               <div className="card-footer">
-                <EditButton texto={"Ver Oferta"} id={item.empresa_id} />
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="modal-dialog modal-dialog-centered">...</div>
     </div>
   );
 };
